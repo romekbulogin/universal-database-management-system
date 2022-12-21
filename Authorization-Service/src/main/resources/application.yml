@@ -1,2 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/users
+    username: postgres
+    password: 1337
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL82Dialect
+    properties:
+      hibernate:
+        format_sql: true
+
 logging:
   config: 'classpath:log4j2.yml'
