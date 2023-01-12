@@ -1,4 +1,4 @@
-package ru.edu.databasemanager.config
+package ru.edu.queryexecutor.config.dto
 
 data class Database(
     var url: String? = null,

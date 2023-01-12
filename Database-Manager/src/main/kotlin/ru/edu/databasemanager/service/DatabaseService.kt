@@ -4,7 +4,7 @@ import mu.KotlinLogging
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-import ru.edu.databasemanager.config.DatabaseConfig
+import ru.edu.databasemanager.config.DatabaseConfiguration
 import ru.edu.databasemanager.response.FailedCreatedDatabase
 import ru.edu.databasemanager.response.FailedDeletedDatabase
 import ru.edu.databasemanager.response.SuccessfullyCreateDatabase
@@ -14,12 +14,12 @@ import java.sql.Connection
 
 @Service
 class DatabaseService(
-    private val databaseConfig: DatabaseConfig
+    private val databaseConfiguration: DatabaseConfiguration
 ) {
     private val logger = KotlinLogging.logger {}
 
     fun findDriver(driverName: String?): Connection? {
-        return databaseConfig.dataBaseList.stream().filter { it ->
+        return databaseConfiguration.dataBaseList.stream().filter { it ->
             driverName.equals(it.dataSource?.connection?.metaData?.databaseProductName)
         }.findAny().get().dataSource?.connection
     }

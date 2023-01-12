@@ -28,17 +28,7 @@ class UserService(
         return try {
             usersEntity.password = BCryptPasswordEncoder().encode(usersEntity.password)
             userRepository.save(usersEntity)
-            ResponseEntity(HttpStatus.OK)
-        } catch (ex: Exception) {
-            logger.error(ex.message)
-            ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
-        }
-    }
-
-    fun saveRole(roleEntity: RoleEntity): ResponseEntity<Any> {
-        return try {
-            roleRepository.save(roleEntity)
-            ResponseEntity(HttpStatus.OK)
+            ResponseEntity(HttpStatus.CREATED)
         } catch (ex: Exception) {
             logger.error(ex.message)
             ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
@@ -62,7 +52,7 @@ class UserService(
             ResponseEntity(user, HttpStatus.OK)
         } catch (ex: Exception) {
             logger.error(ex.message)
-            ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
+            ResponseEntity(mapOf("error" to ex.message), HttpStatus.NOT_FOUND)
         }
     }
 
@@ -72,7 +62,7 @@ class UserService(
             ResponseEntity(user, HttpStatus.OK)
         } catch (ex: Exception) {
             logger.error(ex.message)
-            ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
+            ResponseEntity(mapOf("error" to ex.message), HttpStatus.NOT_FOUND)
         }
     }
 

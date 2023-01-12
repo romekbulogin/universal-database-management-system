@@ -13,7 +13,7 @@ import ru.edu.authorizationservice.service.RoleService
 class RoleController(private val roleService: RoleService) {
 
     @PostMapping("/create")
-    fun createRole(@RequestBody roleEntity: RoleEntity) = roleService.save(roleEntity)
+    fun createRole(@RequestBody roleEntity: RoleEntity) = roleService.saveRole(roleEntity)
 
     @GetMapping("/find_all")
     fun findAll() = roleService.findRoles()
