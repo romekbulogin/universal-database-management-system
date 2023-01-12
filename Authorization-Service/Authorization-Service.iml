@@ -10,47 +10,27 @@
         </sourceRoots>
       </configuration>
     </facet>
-    <facet type="Spring" name="Spring">
-      <configuration />
-    </facet>
-    <facet type="kotlin-language" name="Kotlin">
-      <configuration version="5" platform="JVM 17" allPlatforms="JVM [17]" useProjectSettings="false">
-        <compilerSettings>
-          <option name="additionalArguments" value="-java-parameters -Xjsr305=strict" />
-        </compilerSettings>
-        <compilerArguments>
-          <stringArguments>
-            <stringArg name="jvmTarget" arg="17" />
-            <stringArg name="apiVersion" arg="1.7" />
-            <stringArg name="languageVersion" arg="1.7" />
-          </stringArguments>
-          <arrayArguments>
-            <arrayArg name="pluginClasspaths">
-              <args>$KOTLIN_BUNDLED$/lib/allopen-compiler-plugin.jar</args>
-            </arrayArg>
-            <arrayArg name="pluginOptions">
-              <args>
-                <arg>plugin:org.jetbrains.kotlin.allopen:annotation=org.springframework.stereotype.Component</arg>
-                <arg>plugin:org.jetbrains.kotlin.allopen:annotation=org.springframework.transaction.annotation.Transactional</arg>
-                <arg>plugin:org.jetbrains.kotlin.allopen:annotation=org.springframework.scheduling.annotation.Async</arg>
-                <arg>plugin:org.jetbrains.kotlin.allopen:annotation=org.springframework.cache.annotation.Cacheable</arg>
-                <arg>plugin:org.jetbrains.kotlin.allopen:annotation=org.springframework.boot.test.context.SpringBootTest</arg>
-                <arg>plugin:org.jetbrains.kotlin.allopen:annotation=org.springframework.validation.annotation.Validated</arg>
-              </args>
-            </arrayArg>
-          </arrayArguments>
-        </compilerArguments>
-      </configuration>
-    </facet>
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping>
-          <factory-entry name="entityManagerFactory" />
-          <factory-entry name="noname-a.xml@0" value="a93a51ea-b0a9-4037-b5a3-c1dbf8b53f34" />
-        </datasource-mapping>
+        <datasource-mapping />
         <naming-strategy-map />
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="5" platform="JVM 1.8" allPlatforms="JVM [1.8]">
+        <compilerSettings />
+        <compilerArguments>
+          <stringArguments>
+            <stringArg name="jvmTarget" arg="1.8" />
+            <stringArg name="apiVersion" arg="1.7" />
+            <stringArg name="languageVersion" arg="1.7" />
+          </stringArguments>
+        </compilerArguments>
       </configuration>
     </facet>
   </component>

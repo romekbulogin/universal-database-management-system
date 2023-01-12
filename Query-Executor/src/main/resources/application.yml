@@ -1,0 +1,14 @@
+logging:
+  config: 'classpath:log4j2.yml'
+
+spring:
+  rabbitmq:
+    consumer:
+      exchange: query-executor-exchange
+      queue: query-executor-queue
+      routing-key: query-executor-routing-key
+    username: guest
+    password: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"

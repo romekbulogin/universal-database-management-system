@@ -21,11 +21,11 @@ class RabbitConfiguration {
     private val routingKey: String? = null
 
     @Bean
-    fun queue() = Queue(queue, false)
+    fun queueExecutor() = Queue(queue, false)
 
     @Bean
     fun exchange() = DirectExchange(exchange)
 
     @Bean
-    fun binding(): Binding? = BindingBuilder.bind(queue()).to(exchange()).with(routingKey)
+    fun binding(): Binding? = BindingBuilder.bind(queueExecutor()).to(exchange()).with(routingKey)
 }
