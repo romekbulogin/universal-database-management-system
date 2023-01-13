@@ -12,14 +12,23 @@ class DatabaseConfiguration(private val databaseList: DatabaseList) {
     private var driverManagerDataSources: MutableList<DriverManagerDataSource> = mutableListOf()
 
     @Bean
-    fun initDatabase() {
-        databaseList.databases?.forEach {
-            driverManagerDataSources.add(DriverManagerDataSource().apply {
-                url = it.url
-                username = it.username
-                password = it.password
-            })
-            logger.info("Connect to ${it.url}")
+    fun initDatabase(): MutableList<DriverManagerDataSource>? {
+        try {
+            databaseList.databases?.forEach {
+                val dataSource = DriverManagerDataSource().apply {
+                    url = it.url
+                    username = it.username
+                    password = it.password
+                }
+                if (!dataSource.connection.isClosed) {
+                    driverManagerDataSources.add(dataSource)
+                    logger.info("Connect to: ${dataSource.url}")
+                }
+            }
+            return driverManagerDataSources
+        } catch (ex: Exception) {
+            logger.error(ex.message)
         }
+        return driverManagerDataSources
     }
 }

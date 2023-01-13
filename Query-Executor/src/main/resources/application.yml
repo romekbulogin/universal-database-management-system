@@ -2,11 +2,18 @@ logging:
   config: 'classpath:log4j2.yml'
 
 spring:
+  config:
+    import: file:databases.yml
   rabbitmq:
     consumer:
       exchange: query-executor-exchange
-      queue: query-executor-queue
-      routing-key: query-executor-routing-key
+      request:
+        queue: query-executor-queue
+        routing-key: query-executor-routing-key
+      response:
+        queue-response: query-executor-queue-response
+        routing-key-response: query-executor-routing-key-response
+
     username: guest
     password: guest
     ports:

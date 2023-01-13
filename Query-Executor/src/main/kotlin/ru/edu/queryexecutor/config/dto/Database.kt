@@ -4,5 +4,5 @@ data class Database(
     var url: String? = null,
     var username: String? = null,
     var password: String? = null,
-    var driver: String? = null
+    var driverClassName: String? = null
 )
