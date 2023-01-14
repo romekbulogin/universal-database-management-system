@@ -27,6 +27,9 @@ class UserEntity : UserDetails {
         this.email = email
     }
 
+    fun getEmail() = this.email
+    fun getIsActivated() = this.isActivated
+    fun getRole(): Role? = this.role
     fun setPassword(password: String) {
         this.password = password
     }
@@ -44,7 +47,7 @@ class UserEntity : UserDetails {
 
     override fun getPassword(): String? = password
 
-    override fun getUsername(): String? = email
+    override fun getUsername(): String? = this.username
 
     override fun isAccountNonExpired(): Boolean = true
 

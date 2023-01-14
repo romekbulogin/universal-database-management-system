@@ -5,6 +5,7 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
+import ru.edu.authorizationservice.dto.UserResponse
 import ru.edu.authorizationservice.entity.Role
 import ru.edu.authorizationservice.entity.UserEntity
 import ru.edu.authorizationservice.repository.UserRepository
@@ -33,7 +34,13 @@ class AuthenticationService(
             }
             userRepository.save(user)
             val jwtToken = jwtService.generateToken(user)
-            return AuthenticationResponse(jwtToken)
+            return AuthenticationResponse(jwtToken, UserResponse().apply {
+                this.username = user.username!!
+                this.email = user.getEmail()!!
+                this.password = user.password!!
+                this.isActivated = user.getIsActivated()!!
+                this.role = user.getRole()
+            })
         } catch (ex: Exception) {
             logger.error(ex.message)
             throw ex
@@ -46,7 +53,13 @@ class AuthenticationService(
             authenticationManager.authenticate(UsernamePasswordAuthenticationToken(request.email, request.password))
             val user = userRepository.findByEmail(request.email).orElseThrow()
             val jwtToken = jwtService.generateToken(user)
-            return AuthenticationResponse(jwtToken)
+            return AuthenticationResponse(jwtToken, UserResponse().apply {
+                this.username = user.username!!
+                this.email = user.getEmail()!!
+                this.password = user.password!!
+                this.isActivated = user.getIsActivated()!!
+                this.role = user.getRole()
+            })
         } catch (ex: Exception) {
             logger.error(ex.message)
             throw ex
