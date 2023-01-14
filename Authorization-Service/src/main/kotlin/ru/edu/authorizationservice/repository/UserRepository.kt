@@ -1,11 +1,9 @@
 package ru.edu.authorizationservice.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories
-import org.springframework.stereotype.Repository
-import ru.edu.authorizationservice.entity.UsersEntity
+import ru.edu.authorizationservice.entity.UserEntity
+import java.util.Optional
 
-@Repository
-interface UserRepository : JpaRepository<UsersEntity, Int> {
-    fun findByUsername(username: String?): UsersEntity
+interface UserRepository : JpaRepository<UserEntity, Int> {
+    fun findByEmail(email: String): Optional<UserEntity>
 }

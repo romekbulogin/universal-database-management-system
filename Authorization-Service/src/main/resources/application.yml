@@ -1,16 +1,21 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/users
+    url: jdbc:postgresql://localhost:5432/udbms_users
     username: postgres
     password: 1337
     driver-class-name: org.postgresql.Driver
   jpa:
-    open-in-view: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQL82Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+secret:
+  key: 0JvQrtCR0JvQriDQodCe0KHQkNCi0Kwg0JHQntCb0KzQqNCY0JUg0JLQntCb0J7QodCQ0KLQq9CVINCl0KPQmA==
 
 logging:
   config: 'classpath:log4j2.yml'

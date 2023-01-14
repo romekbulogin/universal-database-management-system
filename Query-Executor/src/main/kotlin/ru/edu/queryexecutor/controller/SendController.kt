@@ -14,13 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import ru.edu.queryexecutor.rabbit.producer.QueryProducer
+import ru.edu.queryexecutor.request.FindDatabases
 import ru.edu.queryexecutor.request.QueryRequest
+import ru.edu.queryexecutor.service.DatabaseListViewService
 
 @RestController
 @RequestMapping("/api")
-class SendController(private val queryProducer: QueryProducer, private val rabbitTemplate: RabbitTemplate) {
+class SendController(
+    private val queryProducer: QueryProducer,
+    private val databaseListViewService: DatabaseListViewService
+) {
     private val logger = KotlinLogging.logger { }
 
     @PostMapping("/send_query")
     fun sendQuery(@RequestBody request: QueryRequest): Any = queryProducer.sendQuery(request)
+
+    @PostMapping("/user_databases")
+    fun findAllDatabaseForUser(@RequestBody request: FindDatabases): Any? =
+        databaseListViewService.findAllDatabasesForUser(request)
 }
