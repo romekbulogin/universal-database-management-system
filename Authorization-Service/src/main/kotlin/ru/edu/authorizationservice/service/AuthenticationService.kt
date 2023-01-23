@@ -75,10 +75,10 @@ class AuthenticationService(
 
     fun refresh(token: String): Any {
         try {
-            if (token.isNotEmpty() && token != null) {
+            return if (token.isNotEmpty() && token != null) {
                 logger.info("[Request] Refresh: $token")
                 val user = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).orElseThrow()
-                return AuthenticationResponse(jwtService.generateToken(user), UserResponse().apply {
+                AuthenticationResponse(jwtService.generateToken(user), UserResponse().apply {
                     this.username = user.getNickname().toString()
                     this.email = user.getEmail()!!
                     this.password = user.password!!
@@ -86,7 +86,7 @@ class AuthenticationService(
                     this.role = user.getRole()
                 })
             } else {
-                return ResponseEntity.badRequest()
+                ResponseEntity.badRequest()
             }
         } catch (ex: Exception) {
             logger.error(ex.message)
