@@ -19,6 +19,13 @@ class UserEntity : UserDetails {
     @Enumerated(EnumType.STRING)
     private var role: Role? = null
 
+    @OneToMany
+    private var databases: MutableList<DatabaseEntity>? = null
+
+    fun addDatabase(databaseEntity: DatabaseEntity) {
+        this.databases?.add(databaseEntity)
+    }
+
     fun setUsername(username: String) {
         this.username = username
     }
@@ -28,6 +35,7 @@ class UserEntity : UserDetails {
     }
 
     fun getEmail() = this.email
+    fun getNickname() = this.username
     fun getIsActivated() = this.isActivated
     fun getRole(): Role? = this.role
     fun setPassword(password: String) {
@@ -47,7 +55,7 @@ class UserEntity : UserDetails {
 
     override fun getPassword(): String? = password
 
-    override fun getUsername(): String? = this.username
+    override fun getUsername(): String? = this.email
 
     override fun isAccountNonExpired(): Boolean = true
 
