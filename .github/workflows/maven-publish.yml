@@ -29,9 +29,5 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dmaven.test.skip
-
-    - name: Publish to GitHub Packages Apache Maven
-#       run: mvn install -s $GITHUB_WORKSPACE/settings.xml -Dmaven.test.skip
-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/romekbulogin -Dtoken=$GITHUB_TOKEN -Dmaven.test.skip
       env:
         GITHUB_TOKEN: ${{ github.token }}
