@@ -34,5 +34,5 @@ jobs:
     - name: Build and push image
       run: |
         echo "${{ secrets.docker_password }}" | docker login -u "romanbulygin" --password-stdin
-        docker docker-compose up --build .
+        docker build -t myproject -f Dockerfile ./web
         docker push romanbulygin/authorization-service:latest

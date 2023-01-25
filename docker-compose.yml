@@ -9,10 +9,10 @@ services:
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
       - 'POSTGRES_DB=udbms_users'
 
-  app:
+  web:
     build:
       dockerfile: Dockerfile
-      context: ./app
+      context: ./web
     container_name: 'authorization-service'
     ports:
       - "8080:8080"
