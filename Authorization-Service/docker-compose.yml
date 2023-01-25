@@ -1,0 +1,16 @@
+version: '1'
+
+services:
+  postgres:
+    image: 'postgres:15'
+    container_name: 'udbms_users'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+      - 'POSTGRES_DB=udbms_users'
+
+  app:
+    build: ./
+    container_name: 'authorization-service'
+    ports:
+      - 8080:8080
