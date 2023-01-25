@@ -1,4 +1,4 @@
-version: '1'
+version: '3'
 
 services:
   postgres:
@@ -10,7 +10,10 @@ services:
       - 'POSTGRES_DB=udbms_users'
 
   app:
-    build: Authorization-Service
+    build:
+      dockerfile: Dockerfile
+      context: ./app
     container_name: 'authorization-service'
     ports:
-      - 8080:8080
+      - "8080:8080"
+    depends_on: postgres
