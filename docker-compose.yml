@@ -10,7 +10,9 @@ services:
       - 'POSTGRES_DB=udbms_users'
 
   app:
-    build: ./Authorization-Service/Dockerfile
+    build:
+      dockerfile: ./Authorization-Service/Dockerfile
+      context: .
     container_name: 'authorization-service'
     ports:
       - "8080:8080"
