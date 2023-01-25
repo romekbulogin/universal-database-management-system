@@ -9,11 +9,8 @@ services:
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
       - 'POSTGRES_DB=udbms_users'
 
-  web:
-    build:
-      dockerfile: Dockerfile
-      context: ./web
+  app:
+    build: ./Authorization-Service/Dockerfile
     container_name: 'authorization-service'
     ports:
       - "8080:8080"
-    depends_on: postgres
