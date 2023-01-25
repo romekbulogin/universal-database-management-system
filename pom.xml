@@ -12,4 +12,5 @@
         <module>Database-Manager</module>
         <module>Query-Executor</module>
     </modules>
+
 </project>

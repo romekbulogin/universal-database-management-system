@@ -27,13 +27,15 @@ class JwtAuthenticationFilter(private val jwtService: JwtService, private val us
         val authHeader: String? = request.getHeader("Authorization")
         if (authHeader == null) {
             filterChain.doFilter(request, response);
-            return;
+            return
         }
         if (authHeader == "" || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return
         }
+
         val jwt = authHeader.substring(7)
+        logger.debug(request.headerNames)
         val userEmail = jwtService.extractUsername(jwt)
 
         if (userEmail != null && SecurityContextHolder.getContext().authentication == null) {
