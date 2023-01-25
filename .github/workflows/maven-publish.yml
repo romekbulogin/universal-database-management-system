@@ -31,3 +31,8 @@ jobs:
       run: mvn -B package --file pom.xml -Dmaven.test.skip
       env:
         GITHUB_TOKEN: ${{ github.token }}
+    - name: Build and push image
+      run: |
+        echo "${{ secrets.docker_password }}" | docker login -u "romanbulygin" --password-stdin
+        docker image build -t romanbulygin/authorization-service:latest .
+        docker push romanbulygin/authorization-service:latest
