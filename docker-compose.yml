@@ -10,7 +10,7 @@ services:
       - 'POSTGRES_DB=udbms_users'
 
   app:
-    build: ./
+    build: Authorization-Service
     container_name: 'authorization-service'
     ports:
       - 8080:8080
