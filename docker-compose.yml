@@ -13,6 +13,7 @@ services:
     build:
       dockerfile: ./Authorization-Service/Dockerfile
       context: .
+    image: 'authorization-service'
     container_name: 'authorization-service'
     ports:
       - "8080:8080"
