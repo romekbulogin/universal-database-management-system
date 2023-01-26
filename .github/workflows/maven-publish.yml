@@ -36,5 +36,5 @@ jobs:
       with:
         github-username: romekbulogin
         github-token: GITHUB_TOKEN
-        dockerfile: Dockerfile
+        dockerfile: ./Auhtorization-Service/Dockerfile
         build-context: .
