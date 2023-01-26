@@ -41,7 +41,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Push image to GitHub Container Registry
       run: |  
-        docker build ./Authorization-Service
+        docker-compose build
         docker images
-        docker tag authorization-service:latest ghcr.io/romekbulogin/authorization-service:latest
-        docker push ghcr.io/romekbulogin/authorization-service:latest
+        docker tag universal-database-management-system ghcr.io/romekbulogin/universal-database-management-system:latest
+        docker push ghcr.io/romekbulogin/universal-database-management-system:latest
