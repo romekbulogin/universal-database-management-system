@@ -31,10 +31,12 @@ jobs:
       run: mvn -B package --file pom.xml -Dmaven.test.skip
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        AUTH_SERVICE: authorization-service
     - name: Log into GitHub Container Registry
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Push image to GitHub Container Registry
       run: |
-        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/universal-database-management-system:latest        
+        IMAGE_ID=ghcr.io/${{ AUTH_SERVICE }}/${{ AUTH_SERVICE }}:latest        
         docker push $IMAGE_ID
+        docker tag ${{ AUTH_SERVICE }}/ghcr.io/${{ github.actor }}/${{ AUTH_SERVICE }}:latest
