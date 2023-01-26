@@ -37,5 +37,5 @@ jobs:
     - name: Push image to GitHub Container Registry
       run: |  
         docker-compose build
-        docker tag ${{ vars.AUTH_SERVICE }} ghcr.io/${{ github.actor }}/${{ vars.AUTH_SERVICE }}:latest
-        docker push ghcr.io/${{ github.actor }}/${{ vars.AUTH_SERVICE }}:latest
+        docker tag authorization-service:latest ghcr.io/romekbulogin/authorization-service:latest
+        docker push ghcr.io/romekbulogin/authorization-service:latest
