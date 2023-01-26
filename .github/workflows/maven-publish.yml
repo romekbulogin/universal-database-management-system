@@ -38,4 +38,4 @@ jobs:
       run: |  
         docker-compose build
         docker tag ${{ vars.AUTH_SERVICE }} ghcr.io/${{ github.actor }}/${{ vars.AUTH_SERVICE }}:latest
-        docker push ghcr.io/${{ vars.AUTH_SERVICE }}/${{ vars.AUTH_SERVICE }}:latest
+        docker push ghcr.io/${{ github.actor }}/${{ vars.AUTH_SERVICE }}:latest
