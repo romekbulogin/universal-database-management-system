@@ -32,9 +32,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - name: Build and publish Docker Image to GitHub Container Registry
-      uses: TCPShield/gp-docker-action@1.1.13
-      with:
-        github-username: romekbulogin
-        github-token: GITHUB_TOKEN
-        dockerfile: ./Auhtorization-Service/Dockerfile
-        build-context: .
+      run: 
+        export CR_PAT=${{ github.token }}
+        echo $CR_PAT | docker login ghcr.io -u romekbulogin –password-stdin
+        docker push ghcr.io/romekbulogin/universal-database-management-system:latest
