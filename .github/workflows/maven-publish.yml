@@ -43,5 +43,5 @@ jobs:
       run: |  
         docker-compose build
         docker images
-        docker tag universal-database-management-system ghcr.io/romekbulogin/universal-database-management-system:latest
+        docker tag universal-database-management-system_app ghcr.io/romekbulogin/universal-database-management-system:latest
         docker push ghcr.io/romekbulogin/universal-database-management-system:latest
