@@ -31,8 +31,10 @@ jobs:
       run: mvn -B package --file pom.xml -Dmaven.test.skip
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    - name: Build and push image
-      run: |
-        echo "${{ secrets.docker_password }}" | docker login ghcr.io -u romanbulygin --password-stdin
-        docker-compose build
-        docker push ghcr.io/romanbulygin/authorization-service:latest
+    - name: Build and publish Docker Image to GitHub Container Registry
+      uses: TCPShield/gp-docker-action@1.1.13
+      with:
+        github-username: romekbulogin
+        github-token: GITHUB_TOKEN
+        dockerfile: Dockerfile
+        build-context: .
