@@ -36,6 +36,6 @@ jobs:
 
     - name: Push image to GitHub Container Registry
       run: |
-        IMAGE_ID=ghcr.io/${{ AUTH_SERVICE }}/${{ AUTH_SERVICE }}:latest        
+        IMAGE_ID=ghcr.io/${{ variables.AUTH_SERVICE }}/${{ variables.AUTH_SERVICE }}:latest        
         docker push $IMAGE_ID
         docker tag ${{ variables.AUTH_SERVICE }}/ghcr.io/${{ github.actor }}/${{ variables.AUTH_SERVICE }}:latest
