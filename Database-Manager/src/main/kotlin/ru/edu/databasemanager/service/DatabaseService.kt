@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import ru.edu.databasemanager.config.DatabaseConfiguration
+import ru.edu.databasemanager.request.DatabaseRequest
 import ru.edu.databasemanager.response.FailedCreatedDatabase
 import ru.edu.databasemanager.response.FailedDeletedDatabase
 import ru.edu.databasemanager.response.SuccessfullyCreateDatabase
@@ -24,33 +25,33 @@ class DatabaseService(
         }.findAny().get().dataSource?.connection
     }
 
-    fun createDatabase(name: String?, dataBaseName: String?): Any {
+    fun createDatabase(request: DatabaseRequest): Any {
         return try {
-            val connection = findDriver(dataBaseName)
-            connection?.createStatement()?.executeUpdate("create database $name")
-            logger.info("${connection?.metaData?.databaseProductName}: $name created successfully")
+            val connection = findDriver(request.dbms)
+            connection?.createStatement()?.executeUpdate("create database ${request.database}")
+            logger.info("${connection?.metaData?.databaseProductName}: ${request.database} created successfully")
             SuccessfullyCreateDatabase().apply {
-                comment = "Database: $name created successfully"
-                url = "${connection?.metaData?.url}/$name"
+                comment = "Database: ${request.database} created successfully"
+                url = "${connection?.metaData?.url}/${request.database}"
             }
         } catch (ex: Exception) {
-            logger.error("Database creation error: $name. Exception: ${ex.message}")
+            logger.error("Database creation error: ${request.database}. Exception: ${ex.message}")
             ResponseEntity(FailedCreatedDatabase().apply {
-                error = "Database creation error: $name"
+                error = "Database creation error: ${request.database}"
                 exception = ex.message
             }, HttpStatus.BAD_REQUEST)
         }
     }
 
-    fun deleteDatabase(name: String?, dataBaseName: String?): Any {
+    fun deleteDatabase(request: DatabaseRequest): Any {
         return try {
-            findDriver(dataBaseName)?.createStatement()?.executeUpdate("drop database $name")
-            logger.info("Database: $name deleted successfully")
-            SuccessfullyDeleteDatabase(true, "Database: $name deleted successfully")
+            findDriver(request.dbms)?.createStatement()?.executeUpdate("drop database ${request.database}")
+            logger.info("Database: ${request.database} deleted successfully")
+            SuccessfullyDeleteDatabase(true, "Database: ${request.database} deleted successfully")
         } catch (ex: Exception) {
-            logger.error("Database deletion error: $name. Exception: ${ex.message}")
+            logger.error("Database deletion error: ${request.database}. Exception: ${ex.message}")
             ResponseEntity(FailedDeletedDatabase().apply {
-                error = "Database deletion error: $name"
+                error = "Database deletion error: ${request.database}"
                 exception = ex.message
             }, HttpStatus.BAD_REQUEST)
         }

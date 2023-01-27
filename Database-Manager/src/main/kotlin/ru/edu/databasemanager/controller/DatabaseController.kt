@@ -18,18 +18,18 @@ class DatabaseController(
     @PostMapping("/create_database")
     fun createDataBase(@RequestBody request: DatabaseRequest): Any {
         logger.info("Request for create database: $request")
-        return dataBaseService.createDatabase(request.name, request.dataBaseName)
+        return dataBaseService.createDatabase(request)
     }
 
     @PostMapping("/delete_database")
     fun deleteDataBase(@RequestBody request: DatabaseRequest): Any {
         logger.info("Request for delete database: $request")
-        return dataBaseService.deleteDatabase(request.name, request.dataBaseName)
+        return dataBaseService.deleteDatabase(request)
     }
 
     @PostMapping("/execute")
     fun executeQuery(@RequestBody request: DatabaseRequest): Any? {
         logger.info("Request for execute query: $request")
-        return dataBaseService.executeQuery(request.name.toString())
+        return dataBaseService.executeQuery(request.database.toString())
     }
 }

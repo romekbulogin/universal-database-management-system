@@ -185,5 +185,19 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.istack:istack-commons-runtime:4.1.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.antlr:antlr4-runtime:4.10.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:4.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:4.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.11.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.69" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.69" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcutil-jdk15on:1.69" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-openfeign-core:4.0.1" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign.form:feign-form-spring:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign.form:feign-form:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:4.0.1" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign:feign-core:12.1" level="project" />
+    <orderEntry type="library" name="Maven: io.github.openfeign:feign-slf4j:12.1" level="project" />
   </component>
 </module>
