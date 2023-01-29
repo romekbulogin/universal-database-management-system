@@ -11,7 +11,11 @@ class UserEntity : UserDetails {
     @Id
     @GeneratedValue
     private var id: Int? = null
+
+    @Column(unique = true)
     private var username: String? = null
+
+    @Column(unique = true)
     private var email: String? = null
     private var password: String? = null
     private var isActivated: Boolean? = null
@@ -24,6 +28,10 @@ class UserEntity : UserDetails {
 
     fun addDatabase(databaseEntity: DatabaseEntity) {
         this.databases?.add(databaseEntity)
+    }
+
+    fun deleteDatabase(databaseEntity: DatabaseEntity) {
+        this.databases?.remove(databaseEntity)
     }
 
     fun setUsername(username: String) {

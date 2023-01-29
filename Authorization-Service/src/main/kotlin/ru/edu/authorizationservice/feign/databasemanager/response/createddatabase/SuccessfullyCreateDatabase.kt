@@ -1,4 +1,4 @@
-package ru.edu.databasemanager.response
+package ru.edu.authorizationservice.feign.databasemanager.response.createddatabase
 
 data class SuccessfullyCreateDatabase(
     var success: Boolean? = true,

@@ -1,4 +1,4 @@
-package ru.edu.authorizationservice.feign.databasemanager.response
+package ru.edu.authorizationservice.feign.databasemanager.response.createddatabase
 
 data class FailedCreatedDatabase(
     var error: String? = null,

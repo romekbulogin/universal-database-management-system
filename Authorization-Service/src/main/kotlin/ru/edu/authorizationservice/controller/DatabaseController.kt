@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.edu.authorizationservice.feign.databasemanager.DatabaseManagerClient
 import ru.edu.authorizationservice.request.AddDatabaseRequest
+import ru.edu.authorizationservice.request.DeleteDatabase
 import ru.edu.authorizationservice.service.DatabaseService
 
 @RestController
@@ -21,4 +22,7 @@ class DatabaseController(
         @RequestBody addDatabaseRequest: AddDatabaseRequest,
         @RequestHeader(value = "Authorization") token: String
     ): ResponseEntity<Any> = databaseService.addNewDatabaseForUser(addDatabaseRequest, token)
+
+    @PostMapping("/delete_database")
+    fun deleteDatabase(@RequestBody deleteDatabase: DeleteDatabase): ResponseEntity<Any> = databaseService.deleteDeleteDatabase(deleteDatabase)
 }

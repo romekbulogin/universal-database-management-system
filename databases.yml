@@ -4,7 +4,9 @@ unigate:
       username: postgres
       password: 1337
       driverClassName: PostgreSQL
+      sqlCreateUser: CREATE USER usertag WITH PASSWORD passtag;
     - url: jdbc:mysql://localhost:3306/
       username: root
       password: 1337
       driverClassName: MySQL
+      sqlCreateUser: CREATE USER usertag IDENTIFIED BY passtag;

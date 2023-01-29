@@ -1,4 +1,4 @@
-package ru.edu.authorizationservice.feign.databasemanager.response
+package ru.edu.authorizationservice.feign.databasemanager.response.deleteddatabase
 
 data class SuccessfullyDeleteDatabase(
     var success: Boolean? = null,

@@ -1,4 +1,4 @@
-package ru.edu.databasemanager.config
+package ru.edu.databasemanager.config.dto
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration

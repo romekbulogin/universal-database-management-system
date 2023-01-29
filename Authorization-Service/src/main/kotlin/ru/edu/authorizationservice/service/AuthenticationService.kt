@@ -9,17 +9,20 @@ import org.springframework.stereotype.Service
 import ru.edu.authorizationservice.dto.UserResponse
 import ru.edu.authorizationservice.entity.Role
 import ru.edu.authorizationservice.entity.UserEntity
+import ru.edu.authorizationservice.feign.databasemanager.DatabaseManagerClient
 import ru.edu.authorizationservice.repository.UserRepository
 import ru.edu.authorizationservice.request.AuthenticationRequest
 import ru.edu.authorizationservice.request.RegistrationRequest
 import ru.edu.authorizationservice.response.AuthenticationResponse
+import java.sql.DriverManager
 
 @Service
 class AuthenticationService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
     private val jwtService: JwtService,
-    private val authenticationManager: AuthenticationManager
+    private val authenticationManager: AuthenticationManager,
+    private val databaseManagerClient: DatabaseManagerClient
 ) {
     private val logger = KotlinLogging.logger { }
 
@@ -38,7 +41,6 @@ class AuthenticationService(
                 return AuthenticationResponse(jwtService.generateToken(user), UserResponse().apply {
                     this.username = user.getNickname().toString()
                     this.email = user.getEmail()!!
-                    this.password = user.password!!
                     this.isActivated = user.getIsActivated()!!
                     this.role = user.getRole()
                 })
@@ -60,7 +62,6 @@ class AuthenticationService(
                 return AuthenticationResponse(jwtService.generateToken(user), UserResponse().apply {
                     this.username = user.getNickname().toString()
                     this.email = user.getEmail()!!
-                    this.password = user.password!!
                     this.isActivated = user.getIsActivated()!!
                     this.role = user.getRole()
                 })
@@ -81,7 +82,6 @@ class AuthenticationService(
                 AuthenticationResponse(jwtService.generateToken(user), UserResponse().apply {
                     this.username = user.getNickname().toString()
                     this.email = user.getEmail()!!
-                    this.password = user.password!!
                     this.isActivated = user.getIsActivated()!!
                     this.role = user.getRole()
                 })

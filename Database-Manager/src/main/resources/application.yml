@@ -1,4 +1,3 @@
-
 logging:
   config: 'classpath:log4j2.yml'
 
@@ -6,15 +5,5 @@ spring:
   config:
     import: file:databases.yml
 
-#unigate:
-#  databases:
-#    - url: jdbc:postgresql://localhost:5432/
-#      username: postgres
-#      password: 1337
-#      driverClassName: org.postgresql.Driver
-#    - url: jdbc:mysql://localhost:3306/
-#      username: root
-#      password: 1337
-#      driverClassName: com.mysql.cj.jdbc.Driver
 server:
   port: 8081
