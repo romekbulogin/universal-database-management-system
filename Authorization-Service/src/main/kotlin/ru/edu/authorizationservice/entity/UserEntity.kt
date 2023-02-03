@@ -19,12 +19,19 @@ class UserEntity : UserDetails {
     private var email: String? = null
     private var password: String? = null
     private var isActivated: Boolean? = null
+    private var activatedUUID: String? = null
 
     @Enumerated(EnumType.STRING)
     private var role: Role? = null
 
     @OneToMany
     private var databases: MutableList<DatabaseEntity>? = null
+
+    fun setActivatedUUID(uuid: String) {
+        this.activatedUUID = uuid
+    }
+
+    fun getActivatedUUID() = this.activatedUUID
 
     fun addDatabase(databaseEntity: DatabaseEntity) {
         this.databases?.add(databaseEntity)

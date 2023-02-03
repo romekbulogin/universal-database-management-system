@@ -1,6 +1,7 @@
 package ru.edu.authorizationservice.service
 
 import mu.KotlinLogging
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -15,6 +16,7 @@ import ru.edu.authorizationservice.request.AuthenticationRequest
 import ru.edu.authorizationservice.request.RegistrationRequest
 import ru.edu.authorizationservice.response.AuthenticationResponse
 import java.sql.DriverManager
+import java.util.UUID
 
 @Service
 class AuthenticationService(
@@ -22,7 +24,7 @@ class AuthenticationService(
     private val passwordEncoder: PasswordEncoder,
     private val jwtService: JwtService,
     private val authenticationManager: AuthenticationManager,
-    private val databaseManagerClient: DatabaseManagerClient
+    private val mailService: MailService
 ) {
     private val logger = KotlinLogging.logger { }
 
@@ -36,8 +38,14 @@ class AuthenticationService(
                     setPassword(passwordEncoder.encode(request.password))
                     setIsActivated(false)
                     setRole(Role.INACTIVE_USER)
+                    setActivatedUUID(UUID.randomUUID().toString())
                 }
                 userRepository.save(user)
+                mailService.sendMessageVerify(
+                    request.email,
+                    "Verify your email",
+                    "http://localhost:8080/api/auth/verify/${user.getActivatedUUID()}"
+                )
                 return AuthenticationResponse(jwtService.generateToken(user), UserResponse().apply {
                     this.username = user.getNickname().toString()
                     this.email = user.getEmail()!!
@@ -94,11 +102,16 @@ class AuthenticationService(
         }
     }
 
-//    fun verify(username: String): Any {
-//        try {
-//
-//        } catch (ex: Exception) {
-//
-//        }
-//    }
+    fun verify(uuid: String): ResponseEntity<Map<String, String>> {
+        return try {
+            logger.debug("Verify by UUID: $uuid")
+            val user = userRepository.findByActivatedUUID(uuid)
+            user.setIsActivated(true)
+            userRepository.save(user)
+            ResponseEntity(mapOf("verify" to "success"), HttpStatus.OK)
+        } catch (ex: Exception) {
+            logger.error(ex.message)
+            ResponseEntity(mapOf("verify" to "failed"), HttpStatus.BAD_REQUEST)
+        }
+    }
 }

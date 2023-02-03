@@ -19,6 +19,6 @@ class AuthenticationController(private val authenticationService: Authentication
     @GetMapping("/refresh")
     fun refresh(@RequestHeader(value = "Authorization") token: String) = authenticationService.refresh(token)
 
-//    @PostMapping("/verify")
-//    fun verify(@PathVariable username: String) = authenticationService.verify(username)
+    @GetMapping("/verify/{uuid}")
+    fun verify(@PathVariable(name = "uuid") uuid: String) = authenticationService.verify(uuid)
 }
