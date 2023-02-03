@@ -18,4 +18,7 @@ class AuthenticationController(private val authenticationService: Authentication
 
     @GetMapping("/refresh")
     fun refresh(@RequestHeader(value = "Authorization") token: String) = authenticationService.refresh(token)
+
+//    @PostMapping("/verify")
+//    fun verify(@PathVariable username: String) = authenticationService.verify(username)
 }

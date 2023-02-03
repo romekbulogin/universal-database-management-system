@@ -93,4 +93,12 @@ class AuthenticationService(
             return ResponseEntity.badRequest()
         }
     }
+
+//    fun verify(username: String): Any {
+//        try {
+//
+//        } catch (ex: Exception) {
+//
+//        }
+//    }
 }

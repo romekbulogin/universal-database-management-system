@@ -12,4 +12,9 @@ interface DatabaseRepository : JpaRepository<DatabaseEntity, Int> {
         dbms: String,
         userEntity: UserEntity
     ): DatabaseEntity
+
+    fun findDatabaseEntityByDatabaseNameAndDbms(
+        database: String,
+        dbms: String,
+    ): DatabaseEntity
 }

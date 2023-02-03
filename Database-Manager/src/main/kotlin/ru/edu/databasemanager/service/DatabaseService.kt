@@ -18,6 +18,7 @@ import java.security.MessageDigest
 import java.sql.DriverManager
 import java.sql.SQLException
 import java.util.*
+import kotlin.math.log
 
 
 @Service
@@ -49,11 +50,10 @@ class DatabaseService(
             logger.debug(user.toString())
             val connection = DriverManager.getConnection(database?.url, database?.username, database?.password)
             connection?.createStatement()
-                ?.executeUpdate("create database ${request.database}; ALTER DATABASE ${request.database} OWNER TO ${request.username};")
+                ?.executeUpdate("create database ${request.database}; ALTER DATABASE ${request.database} OWNER TO ${user.username};")
 
             logger.info("${connection?.metaData?.databaseProductName}: ${request.database} created successfully")
             val response = SuccessfullyCreateDatabase().apply {
-                comment = "Database: ${request.database} created successfully"
                 url = "${connection?.metaData?.url}${request.database}"
                 username = user.username
                 password = user.password
@@ -95,31 +95,17 @@ class DatabaseService(
         return try {
             val database = findDriver(request.dbms)
             val connection = DriverManager.getConnection(database?.url, database?.username, database?.password)
-            var password: String? = null
-            val connectionToMainDatabase =
-                DriverManager.getConnection("jdbc:postgresql://localhost:5432/udbms_users", "postgres", "1337")
-            val resultSet = connectionToMainDatabase.createStatement()
-                .executeQuery("select password from _user where username = '${request.username}'")
-            if (resultSet.next()) {
-                password = resultSet.getString("password")
-            }
-
+            val password = RandomStringUtils.random(30, true, true).lowercase(Locale.getDefault())
+            val login = RandomStringUtils.random(10, true, true).lowercase(Locale.getDefault())
             connection.createStatement().execute(
-                database?.sqlCreateUser?.replace("usertag", request.username!!)?.replace("passtag", "'${password}'")
+                database?.sqlCreateUser?.replace("usertag", login)
+                    ?.replace("passtag", "'${password}'")
             )
             connection.close()
-            ResponseEntity(CreateUserResponse(request.username, password), HttpStatus.OK)
+            ResponseEntity(CreateUserResponse(login, password), HttpStatus.OK)
         } catch (ex: SQLException) {
             logger.error(ex.message)
-            var password: String? = null
-            val connection =
-                DriverManager.getConnection("jdbc:postgresql://localhost:5432/udbms_users", "postgres", "1337")
-            val resultSet = connection.createStatement()
-                .executeQuery("select password from _user where username = '${request.username}'")
-            if (resultSet.next()) {
-                password = resultSet.getString("password")
-            }
-            ResponseEntity(CreateUserResponse(request.username, password), HttpStatus.BAD_REQUEST)
+            ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
         }
     }
 

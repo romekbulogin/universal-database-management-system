@@ -6,6 +6,7 @@ import mu.KotlinLogging
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import ru.edu.authorizationservice.entity.DatabaseEntity
 import ru.edu.authorizationservice.feign.databasemanager.DatabaseManagerClient
@@ -27,13 +28,15 @@ class DatabaseService(
     private val objectMapper = ObjectMapper()
     fun addNewDatabaseForUser(request: AddDatabaseRequest, token: String): ResponseEntity<Any> {
         return try {
+            val passwordEncoder = BCryptPasswordEncoder()
             val response = databaseManagerClient.createDatabase(request)
             val currentUser = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
             val database = DatabaseEntity().apply {
                 this.dbms = request.dbms
                 this.databaseName = request.database
                 this.userEntity = currentUser
-                this.passwordDbms = response.password
+                this.login = response.username
+                this.passwordDbms = passwordEncoder.encode(response.password)
             }
             databaseRepository.save(database)
             currentUser.addDatabase(database)

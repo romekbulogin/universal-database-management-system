@@ -14,6 +14,7 @@ data class DatabaseEntity(
     var id: Int? = null,
     var dbms: String? = null,
     var databaseName: String? = null,
+    var login: String? = null,
     var passwordDbms: String? = null,
     @ManyToOne
     var userEntity: UserEntity? = null
