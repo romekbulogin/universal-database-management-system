@@ -52,10 +52,10 @@ class DatabaseService(
         }
     }
 
-    fun deleteDeleteDatabase(request: DeleteDatabase): ResponseEntity<Any> {
+    fun deleteDeleteDatabase(request: DeleteDatabase, token: String): ResponseEntity<Any> {
         return try {
             logger.info("[Delete] $request")
-            val user = userRepository.findByUsername(request.username!!)
+            val user = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
             val database = databaseRepository.findDatabaseEntityByDatabaseNameAndAndDbmsAndAndUserEntity(
                 request.database!!,
                 request.dbms!!,
@@ -73,6 +73,17 @@ class DatabaseService(
         } catch (ex: EmptyResultDataAccessException) {
             logger.error(ex.message)
             ResponseEntity(mapOf("response" to "Database ${request.database} is not exist"), HttpStatus.BAD_REQUEST)
+        }
+    }
+
+    fun viewDatabaseList(token: String): ResponseEntity<Any> {
+        return try {
+            val currentUser = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
+            val databases = databaseRepository.findAllByUserEntity(currentUser)
+            ResponseEntity(databases, HttpStatus.OK)
+        } catch (ex: Exception) {
+            logger.error(ex.message)
+            ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
         }
     }
 }

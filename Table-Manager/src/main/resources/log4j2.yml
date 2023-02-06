@@ -1,0 +1,53 @@
+Configuration:
+  status: warn
+
+  Properties:
+    property:
+      - name: log-path
+        value: "Database-Manager/logs"
+      - name: log-archive
+        value: "${log-path}/archive"
+      - name: log-pattern
+        value: "[%date{ISO8601}][%-5level][%thread][%class.%method] %message%n"
+
+  Appenders:
+    RollingFile:
+      - name: ALL_LOG
+        fileName: ${log-path}/all.log
+        filePattern: "${log-archive}/all.log.%d{yyyy-MM-dd}-%i"
+        PatternLayout:
+          pattern: "${log-pattern}"
+        Policies:
+          TimeBasedTriggeringPolicy: { }
+          SizeBasedTriggeringPolicy:
+            size: 250 MB
+
+      - name: APP_LOG
+        fileName: ${log-path}/app.log
+        filePattern: "${log-archive}/app.log.%d{yyyy-MM-dd}-%i"
+        PatternLayout:
+          pattern: "${log-pattern}"
+        Policies:
+          TimeBasedTriggeringPolicy: { }
+          SizeBasedTriggeringPolicy:
+            size: 250 MB
+
+
+    Console:
+      name: CONSOLE_LOG
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"
+
+  Loggers:
+    Logger:
+      - name: ru.edu
+        level: debug
+        AppenderRef:
+          - ref: APP_LOG
+            level: debug
+    Root:
+      level: info
+      AppenderRef:
+        - ref: ALL_LOG
+        - ref: CONSOLE_LOG

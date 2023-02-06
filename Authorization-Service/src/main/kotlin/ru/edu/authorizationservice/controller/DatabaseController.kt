@@ -1,6 +1,7 @@
 package ru.edu.authorizationservice.controller
 
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
@@ -21,8 +22,14 @@ class DatabaseController(
     fun addDatabaseForUser(
         @RequestBody addDatabaseRequest: AddDatabaseRequest,
         @RequestHeader(value = "Authorization") token: String
-    ): ResponseEntity<Any> = databaseService.addNewDatabaseForUser(addDatabaseRequest, token)
+    ) = databaseService.addNewDatabaseForUser(addDatabaseRequest, token)
 
     @PostMapping("/delete_database")
-    fun deleteDatabase(@RequestBody deleteDatabase: DeleteDatabase): ResponseEntity<Any> = databaseService.deleteDeleteDatabase(deleteDatabase)
+    fun deleteDatabase(
+        @RequestBody deleteDatabase: DeleteDatabase,
+        @RequestHeader(value = "Authorization") token: String
+    ) = databaseService.deleteDeleteDatabase(deleteDatabase, token)
+
+    @GetMapping("/my_databases")
+    fun userDatabase(@RequestHeader(value = "Authorization") token: String) = databaseService.viewDatabaseList(token)
 }

@@ -1,0 +1,370 @@
+[2023-02-03T20:02:31,913][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 16320 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T20:02:31,923][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T20:02:31,924][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T20:02:32,610][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T20:02:32,619][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:02:32,620][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T20:02:32,620][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T20:02:32,670][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T20:02:32,671][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 716 ms
+[2023-02-03T20:02:32,885][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T20:02:33,149][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T20:02:33,301][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:02:33,311][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T20:02:33,315][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.629 seconds (process running for 2.22)
+[2023-02-03T20:04:00,146][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T20:04:00,146][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T20:04:00,146][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T20:04:00,213][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:04:00,356][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=null)
+[2023-02-03T20:04:00,648][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T20:09:22,711][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 6832 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T20:09:22,716][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T20:09:22,716][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T20:09:23,180][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T20:09:23,185][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:09:23,186][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T20:09:23,186][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T20:09:23,226][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T20:09:23,227][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 486 ms
+[2023-02-03T20:09:23,396][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T20:09:23,520][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T20:09:23,659][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:09:23,672][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T20:09:23,676][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.15 seconds (process running for 1.635)
+[2023-02-03T20:10:54,305][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T20:10:54,306][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T20:10:54,306][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T20:10:54,364][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb13, dbms=PostgreSQL)
+[2023-02-03T20:10:54,501][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T20:10:54,535][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=null)
+[2023-02-03T20:10:54,709][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb13 created successfully
+[2023-02-03T20:11:40,075][INFO ][http-nio-8081-exec-4][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:11:40,409][INFO ][http-nio-8081-exec-4][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb12 deleted successfully
+[2023-02-03T20:11:48,681][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb13, dbms=PostgreSQL)
+[2023-02-03T20:11:48,784][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb13 deleted successfully
+[2023-02-03T20:12:05,314][INFO ][http-nio-8081-exec-3][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:12:05,435][ERROR][http-nio-8081-exec-3][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T20:12:05,464][DEBUG][http-nio-8081-exec-3][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=null)
+[2023-02-03T20:12:05,626][INFO ][http-nio-8081-exec-3][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T20:12:22,359][INFO ][http-nio-8081-exec-5][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:12:22,475][INFO ][http-nio-8081-exec-5][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb12 deleted successfully
+[2023-02-03T20:15:36,993][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 12756 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T20:15:36,997][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T20:15:36,998][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T20:15:37,499][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T20:15:37,503][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:15:37,504][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T20:15:37,504][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T20:15:37,547][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T20:15:37,547][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 527 ms
+[2023-02-03T20:15:37,824][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T20:15:37,950][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T20:15:38,098][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:15:38,108][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T20:15:38,113][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.304 seconds (process running for 1.822)
+[2023-02-03T20:15:56,739][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T20:15:56,739][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T20:15:56,740][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T20:15:56,799][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:15:56,932][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T20:15:56,966][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=null)
+[2023-02-03T20:15:57,125][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T20:16:25,056][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:16:25,166][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb12 deleted successfully
+[2023-02-03T20:16:58,502][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 5804 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T20:16:58,507][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T20:16:58,507][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T20:16:59,026][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T20:16:59,031][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:16:59,032][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T20:16:59,032][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T20:16:59,080][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T20:16:59,080][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 548 ms
+[2023-02-03T20:16:59,281][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T20:16:59,412][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T20:16:59,602][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:16:59,614][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T20:16:59,618][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.315 seconds (process running for 1.813)
+[2023-02-03T20:17:19,568][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T20:17:19,568][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T20:17:19,568][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T20:17:19,625][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:17:19,757][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T20:17:19,789][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=null)
+[2023-02-03T20:17:19,956][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T20:17:27,742][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:17:27,846][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb12 deleted successfully
+[2023-02-03T20:17:41,838][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 15172 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T20:17:41,842][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T20:17:41,843][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T20:17:42,320][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T20:17:42,325][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:17:42,325][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T20:17:42,326][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T20:17:42,367][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T20:17:42,367][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 502 ms
+[2023-02-03T20:17:42,533][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T20:17:42,652][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T20:17:42,827][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T20:17:42,842][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T20:17:42,847][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.19 seconds (process running for 1.667)
+[2023-02-03T20:17:53,784][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T20:17:53,784][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T20:17:53,784][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T20:17:53,846][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:17:53,978][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T20:17:54,010][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=null)
+[2023-02-03T20:17:54,174][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T20:18:07,569][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T20:18:07,681][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb12 deleted successfully
+[2023-02-03T21:07:22,013][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 15176 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:07:22,017][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:07:22,018][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:07:22,517][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:07:22,522][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:07:22,523][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:07:22,523][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:07:22,565][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:07:22,565][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 523 ms
+[2023-02-03T21:07:22,754][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:07:22,881][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:07:23,036][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:07:23,046][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:07:23,050][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.225 seconds (process running for 1.693)
+[2023-02-03T21:07:44,967][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T21:07:44,967][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T21:07:44,968][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T21:07:45,025][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T21:07:45,062][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T21:07:45,097][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb12. Exception: ОШИБКА: отношение "_databases" не существует
+  Позиция: 46
+[2023-02-03T21:32:14,399][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 1856 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:32:14,403][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:32:14,403][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:32:14,887][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:32:14,892][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:32:14,893][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:32:14,894][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:32:14,938][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:32:14,938][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 512 ms
+[2023-02-03T21:32:15,117][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:32:15,247][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:32:15,393][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:32:15,404][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:32:15,409][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.196 seconds (process running for 1.718)
+[2023-02-03T21:36:56,415][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 19228 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:36:56,419][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:36:56,420][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:36:56,891][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:36:56,897][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:36:56,898][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:36:56,898][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:36:56,940][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:36:56,940][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 496 ms
+[2023-02-03T21:36:57,112][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:36:57,241][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:36:57,388][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:36:57,399][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:36:57,403][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.178 seconds (process running for 1.628)
+[2023-02-03T21:37:13,957][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T21:37:13,957][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T21:37:13,958][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 1 ms
+[2023-02-03T21:37:14,016][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T21:37:14,113][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T21:37:14,172][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=$2a$10$CUaK8On.GHrjmtNLfePa5emon43tesSUnFH8qWej8Tz1U8nFjZEVq)
+[2023-02-03T21:37:14,387][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T21:37:21,996][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb11, dbms=PostgreSQL)
+[2023-02-03T21:37:22,086][ERROR][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T21:37:22,151][DEBUG][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=$2a$10$YzDpZzq22O1NLrIMv93JUePDBr4EvuoU/EAaHI6EKFmskd0ucl7iy)
+[2023-02-03T21:37:22,330][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb11 created successfully
+[2023-02-03T21:40:59,123][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 12644 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:40:59,127][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:40:59,128][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:40:59,630][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:40:59,635][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:40:59,636][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:40:59,636][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:40:59,679][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:40:59,679][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 529 ms
+[2023-02-03T21:40:59,859][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:40:59,986][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:41:00,144][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:41:00,156][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:41:00,160][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.23 seconds (process running for 1.766)
+[2023-02-03T21:41:12,748][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T21:41:12,748][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T21:41:12,749][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 1 ms
+[2023-02-03T21:41:12,805][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb11, dbms=PostgreSQL)
+[2023-02-03T21:41:12,839][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T21:41:12,840][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=hdEHZaM4Pb57S0YoPmFTQWyFjRhKsf)
+[2023-02-03T21:41:12,870][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb11. Exception: ОШИБКА: база данных "prikoldb11" уже существует
+[2023-02-03T21:41:36,036][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T21:41:36,368][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb12 deleted successfully
+[2023-02-03T21:41:41,392][INFO ][http-nio-8081-exec-3][ru.edu.databasemanager.controller.DatabaseController.deleteDataBase] Request for delete database: DatabaseRequest(username=unarc1337, database=prikoldb11, dbms=PostgreSQL)
+[2023-02-03T21:41:41,492][INFO ][http-nio-8081-exec-3][ru.edu.databasemanager.service.DatabaseService.deleteDatabase] Database: prikoldb11 deleted successfully
+[2023-02-03T21:41:57,727][INFO ][http-nio-8081-exec-4][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb11, dbms=PostgreSQL)
+[2023-02-03T21:41:57,758][ERROR][http-nio-8081-exec-4][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: роль "unarc1337" уже существует
+[2023-02-03T21:41:57,759][DEBUG][http-nio-8081-exec-4][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=unarc1337, password=MmNPYHlsTd5APPj7f10eemSbiIp8ei)
+[2023-02-03T21:41:57,933][INFO ][http-nio-8081-exec-4][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb11 created successfully
+[2023-02-03T21:55:36,701][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 13052 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:55:36,705][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:55:36,705][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:55:37,204][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:55:37,209][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:55:37,209][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:55:37,210][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:55:37,252][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:55:37,252][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 524 ms
+[2023-02-03T21:55:37,434][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:55:37,556][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:55:37,706][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:55:37,716][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:55:37,721][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.201 seconds (process running for 1.692)
+[2023-02-03T21:56:27,248][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T21:56:27,249][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T21:56:27,249][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T21:56:27,307][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb1, dbms=PostgreSQL)
+[2023-02-03T21:56:27,342][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: ошибка синтаксиса (примерное положение: "/")
+  Позиция: 22
+[2023-02-03T21:56:27,344][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb1. Exception: class java.util.Collections$SingletonMap cannot be cast to class ru.edu.databasemanager.response.CreateUserResponse (java.util.Collections$SingletonMap is in module java.base of loader 'bootstrap'; ru.edu.databasemanager.response.CreateUserResponse is in unnamed module of loader 'app')
+[2023-02-03T21:57:16,926][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 15116 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:57:16,929][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:57:16,930][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:57:17,396][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:57:17,401][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:57:17,402][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:57:17,402][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:57:17,448][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:57:17,448][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 496 ms
+[2023-02-03T21:57:17,617][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:57:17,738][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:57:17,882][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:57:17,892][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:57:17,897][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.148 seconds (process running for 1.597)
+[2023-02-03T21:57:21,173][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T21:57:21,173][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T21:57:21,173][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T21:57:21,231][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb1, dbms=PostgreSQL)
+[2023-02-03T21:57:21,265][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: ошибка синтаксиса (примерное положение: "'unarc1337/prikoldb1'")
+  Позиция: 13
+[2023-02-03T21:57:21,266][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb1. Exception: class java.util.Collections$SingletonMap cannot be cast to class ru.edu.databasemanager.response.CreateUserResponse (java.util.Collections$SingletonMap is in module java.base of loader 'bootstrap'; ru.edu.databasemanager.response.CreateUserResponse is in unnamed module of loader 'app')
+[2023-02-03T21:59:05,410][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 2676 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T21:59:05,414][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T21:59:05,415][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T21:59:05,896][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T21:59:05,901][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:59:05,901][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T21:59:05,902][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T21:59:05,944][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T21:59:05,944][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 506 ms
+[2023-02-03T21:59:06,119][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T21:59:06,244][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T21:59:06,401][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T21:59:06,415][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T21:59:06,420][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.199 seconds (process running for 1.663)
+[2023-02-03T21:59:21,422][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T21:59:21,422][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T21:59:21,422][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T21:59:21,476][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb1, dbms=PostgreSQL)
+[2023-02-03T21:59:21,511][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: ошибка синтаксиса (примерное положение: "'NbszRTAhFX'")
+  Позиция: 13
+[2023-02-03T21:59:21,513][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb1. Exception: class java.util.Collections$SingletonMap cannot be cast to class ru.edu.databasemanager.response.CreateUserResponse (java.util.Collections$SingletonMap is in module java.base of loader 'bootstrap'; ru.edu.databasemanager.response.CreateUserResponse is in unnamed module of loader 'app')
+[2023-02-03T22:01:53,377][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 5760 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T22:01:53,381][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T22:01:53,382][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T22:01:53,875][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T22:01:53,880][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:01:53,880][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T22:01:53,880][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T22:01:53,927][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T22:01:53,928][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 521 ms
+[2023-02-03T22:01:54,110][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T22:01:54,240][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T22:01:54,394][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:01:54,406][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T22:01:54,410][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.218 seconds (process running for 1.686)
+[2023-02-03T22:05:40,869][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T22:05:40,869][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T22:05:40,870][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 1 ms
+[2023-02-03T22:05:40,927][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb1, dbms=PostgreSQL)
+[2023-02-03T22:05:40,962][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createUser] ОШИБКА: ошибка синтаксиса (примерное положение: "'bJCPrkEaUA'")
+  Позиция: 13
+[2023-02-03T22:05:40,964][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb1. Exception: class java.util.Collections$SingletonMap cannot be cast to class ru.edu.databasemanager.response.CreateUserResponse (java.util.Collections$SingletonMap is in module java.base of loader 'bootstrap'; ru.edu.databasemanager.response.CreateUserResponse is in unnamed module of loader 'app')
+[2023-02-03T22:06:21,841][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 17916 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T22:06:21,846][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T22:06:21,846][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T22:06:22,319][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T22:06:22,324][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:06:22,325][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T22:06:22,325][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T22:06:22,368][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T22:06:22,368][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 499 ms
+[2023-02-03T22:06:22,543][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T22:06:22,675][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T22:06:22,824][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:06:22,836][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T22:06:22,840][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.186 seconds (process running for 1.642)
+[2023-02-03T22:07:02,588][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T22:07:02,588][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T22:07:02,589][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T22:07:02,643][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb1, dbms=PostgreSQL)
+[2023-02-03T22:07:02,684][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=DUevVmegDJ, password=QkosPlokiMwyZIbV0ZDde7A1VQCKZo)
+[2023-02-03T22:07:02,715][ERROR][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] Database creation error: prikoldb1. Exception: ОШИБКА: база данных "prikoldb1" уже существует
+[2023-02-03T22:07:06,532][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb12, dbms=PostgreSQL)
+[2023-02-03T22:07:06,568][DEBUG][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=EurPNwhyXR, password=ocvG7sk6JMWkXmFdljaLtgHdcsdmA8)
+[2023-02-03T22:07:06,730][INFO ][http-nio-8081-exec-2][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb12 created successfully
+[2023-02-03T22:09:51,353][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 7004 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T22:09:51,357][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T22:09:51,358][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T22:09:51,836][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T22:09:51,841][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:09:51,842][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T22:09:51,842][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T22:09:51,885][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T22:09:51,885][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 506 ms
+[2023-02-03T22:09:52,055][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T22:09:52,176][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T22:09:52,321][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:09:52,332][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T22:09:52,336][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.159 seconds (process running for 1.639)
+[2023-02-03T22:10:09,814][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T22:10:09,815][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T22:10:09,815][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T22:10:09,875][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb13, dbms=PostgreSQL)
+[2023-02-03T22:10:10,034][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=xVuxbVfVSl, password=qFNJcfo8zviLbmNmcYXWCJOgTM2yiT)
+[2023-02-03T22:10:10,197][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb13 created successfully
+[2023-02-03T22:16:43,243][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 17832 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T22:16:43,247][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T22:16:43,248][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T22:16:43,727][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T22:16:43,733][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:16:43,733][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T22:16:43,734][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T22:16:43,778][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T22:16:43,778][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 507 ms
+[2023-02-03T22:16:43,964][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T22:16:44,087][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T22:16:44,236][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:16:44,247][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T22:16:44,252][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.2 seconds (process running for 1.675)
+[2023-02-03T22:17:02,872][INFO ][http-nio-8081-exec-1][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2023-02-03T22:17:02,872][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Initializing Servlet 'dispatcherServlet'
+[2023-02-03T22:17:02,873][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.FrameworkServlet.initServletBean] Completed initialization in 0 ms
+[2023-02-03T22:17:02,927][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.controller.DatabaseController.createDataBase] Request for create database: DatabaseRequest(username=unarc1337, database=prikoldb14, dbms=PostgreSQL)
+[2023-02-03T22:17:02,967][DEBUG][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] CreateUserResponse(username=bvhtxtqfmf, password=zihxtzwwaxw0bil5o0c7hibshkzejk)
+[2023-02-03T22:17:03,139][INFO ][http-nio-8081-exec-1][ru.edu.databasemanager.service.DatabaseService.createDatabase] PostgreSQL: prikoldb14 created successfully
+[2023-02-03T22:39:02,355][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarting] Starting DatabaseManagerApplicationKt using Java 17.0.5 with PID 18420 (C:\Users\Roman\IdeaProjects\universal-database-management-system\Database-Manager\target\classes started by Roman in C:\Users\Roman\IdeaProjects\universal-database-management-system)
+[2023-02-03T22:39:02,359][DEBUG][main][org.springframework.boot.StartupInfoLogger.logStarting] Running with Spring Boot v3.0.0, Spring v6.0.2
+[2023-02-03T22:39:02,360][INFO ][main][org.springframework.boot.SpringApplication.logStartupProfileInfo] No active profile set, falling back to 1 default profile: "default"
+[2023-02-03T22:39:02,843][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize] Tomcat initialized with port(s): 8081 (http)
+[2023-02-03T22:39:02,848][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:39:02,849][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting service [Tomcat]
+[2023-02-03T22:39:02,849][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting Servlet engine: [Apache Tomcat/10.1.1]
+[2023-02-03T22:39:02,895][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Initializing Spring embedded WebApplicationContext
+[2023-02-03T22:39:02,896][INFO ][main][org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext] Root WebApplicationContext: initialization completed in 513 ms
+[2023-02-03T22:39:03,074][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:postgresql://localhost:5432/
+[2023-02-03T22:39:03,201][INFO ][main][ru.edu.databasemanager.config.DatabaseConfiguration.initDatabase] Connect to: jdbc:mysql://localhost:3306/
+[2023-02-03T22:39:03,352][INFO ][main][org.apache.juli.logging.DirectJDKLog.log] Starting ProtocolHandler ["http-nio-8081"]
+[2023-02-03T22:39:03,362][INFO ][main][org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start] Tomcat started on port(s): 8081 (http) with context path ''
+[2023-02-03T22:39:03,367][INFO ][main][org.springframework.boot.StartupInfoLogger.logStarted] Started DatabaseManagerApplicationKt in 1.205 seconds (process running for 1.682)

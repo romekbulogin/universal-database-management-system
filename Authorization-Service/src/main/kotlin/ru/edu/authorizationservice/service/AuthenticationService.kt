@@ -114,4 +114,21 @@ class AuthenticationService(
             ResponseEntity(mapOf("verify" to "failed"), HttpStatus.BAD_REQUEST)
         }
     }
+
+    fun repeatVerify(token: String): Map<String, String> {
+        return try {
+            val uuid = UUID.randomUUID().toString()
+            val currentUser = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
+            currentUser.setActivatedUUID(uuid)
+            mailService.sendMessageVerify(
+                currentUser.getEmail().toString(),
+                "Verify your email",
+                "http://localhost:8080/api/auth/verify/${uuid}"
+            )
+            mapOf("status" to "send message verify")
+        } catch (ex: Exception) {
+            logger.error(ex.message)
+            mapOf("status" to "error sending")
+        }
+    }
 }

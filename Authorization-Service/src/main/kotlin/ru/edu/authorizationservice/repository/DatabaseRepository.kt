@@ -17,4 +17,6 @@ interface DatabaseRepository : JpaRepository<DatabaseEntity, Int> {
         database: String,
         dbms: String,
     ): DatabaseEntity
+
+    fun findAllByUserEntity(userEntity: UserEntity): List<DatabaseEntity>
 }

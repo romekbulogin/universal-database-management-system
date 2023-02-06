@@ -21,4 +21,7 @@ class AuthenticationController(private val authenticationService: Authentication
 
     @GetMapping("/verify/{uuid}")
     fun verify(@PathVariable(name = "uuid") uuid: String) = authenticationService.verify(uuid)
+
+    @PostMapping("/repeat_verify")
+    fun repeatVerify(@RequestHeader(value = "Authorization") token: String) = authenticationService.repeatVerify(token)
 }
