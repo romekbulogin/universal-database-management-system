@@ -11,6 +11,7 @@
         <module>Authorization-Service</module>
         <module>Database-Manager</module>
         <module>Query-Executor</module>
+        <module>Table-Manager</module>
     </modules>
 
 </project>

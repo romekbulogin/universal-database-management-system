@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.edu</groupId>
-    <artifactId>Query-Executor</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Query-Executor</name>
-    <description>Query-Executor</description>
+    <artifactId>query-executor</artifactId>
+    <version>0.0.1</version>
+    <name>query-executor</name>
+    <description>query-executor</description>
     <properties>
         <java.version>17</java.version>
         <kotlin.version>1.7.22</kotlin.version>

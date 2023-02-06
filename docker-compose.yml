@@ -2,18 +2,31 @@ version: '3'
 
 services:
   postgres:
-    image: 'postgres:15'
+    image: postgres:15
     container_name: 'udbms_users'
     environment:
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
       - 'POSTGRES_DB=udbms_users'
 
-  app:
+  rabbitmq:
+    image: rabbitmq
+    container_name: 'rabbitmq'
+
+  authorization-service:
     build:
       dockerfile: ./Authorization-Service/Dockerfile
       context: .
-    image: 'authorization-service'
+    image: authorization-service
     container_name: 'authorization-service'
     ports:
       - "8080:8080"
+
+  query-executor:
+    build:
+      dockerfile: ./Query-Executor/Dockerfile
+      context: .
+    image: query-executor
+    container_name: 'query-executor'
+    ports:
+      - "8081:8081"

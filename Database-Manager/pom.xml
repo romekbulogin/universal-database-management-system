@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.edu</groupId>
-    <artifactId>Database-Manager</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Database-Manager</name>
-    <description>Database-Manager</description>
+    <artifactId>database-manager</artifactId>
+    <version>0.0.1</version>
+    <name>database-manager</name>
+    <description>database-manager</description>
     <properties>
         <java.version>17</java.version>
         <kotlin.version>1.7.21</kotlin.version>

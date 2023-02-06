@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.edu</groupId>
-    <artifactId>Table-Manager</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Table-Manager</name>
-    <description>Table-Manager</description>
+    <artifactId>table-manager</artifactId>
+    <version>0.0.1</version>
+    <name>table-manager</name>
+    <description>table-manager</description>
     <properties>
         <java.version>17</java.version>
         <kotlin.version>1.7.22</kotlin.version>
