@@ -3,23 +3,21 @@ package ru.edu.queryexecutor.service
 import mu.KotlinLogging
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import org.springframework.stereotype.Service
-import ru.edu.queryexecutor.config.dto.Database
-import ru.edu.queryexecutor.config.dto.DatabaseList
+import ru.edu.queryexecutor.feign.InstancesManagerClient
+import ru.edu.queryexecutor.feign.request.InstanceEntity
 import ru.edu.queryexecutor.request.FindDatabases
 import java.sql.SQLException
 
 @Service
-class DatabaseListViewService(private val databaseList: DatabaseList) {
+class DatabaseListViewService(private val instancesManagerClient: InstancesManagerClient) {
     private val logger = KotlinLogging.logger { }
-    fun findDriver(driverName: String?): Database? {
-        try {
-            return databaseList.databases?.stream()?.filter {
-                it.driverClassName.equals(driverName)
-            }?.findFirst()?.orElseThrow()
-        } catch (ex: NoSuchElementException) {
+    fun findDriver(driverName: String): InstanceEntity? {
+        return try {
+            instancesManagerClient.findInstanceByDbms(driverName)
+        } catch (ex: Exception) {
             logger.error(ex.message)
+            null
         }
-        return null
     }
 
     fun findAllDatabasesForUser(request: FindDatabases): Any? {

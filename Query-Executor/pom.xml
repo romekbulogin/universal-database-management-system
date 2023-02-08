@@ -91,6 +91,12 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <!--Spring Feign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>4.0.1</version>
+        </dependency>
         <!--Test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

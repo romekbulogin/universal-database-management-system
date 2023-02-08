@@ -2,26 +2,17 @@ package ru.edu.databasemanager.service
 
 import mu.KotlinLogging
 import org.apache.commons.lang3.RandomStringUtils
-import org.apache.logging.log4j.core.util.PasswordDecryptor
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.crypto.bcrypt.BCrypt
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.PathVariable
-import ru.edu.databasemanager.config.dto.Database
-import ru.edu.databasemanager.config.dto.DatabaseList
 import ru.edu.databasemanager.feign.InstancesManagerClient
 import ru.edu.databasemanager.feign.request.InstanceEntity
 import ru.edu.databasemanager.request.CreateUserRequest
 import ru.edu.databasemanager.request.DatabaseRequest
 import ru.edu.databasemanager.response.*
-import java.security.MessageDigest
 import java.sql.DriverManager
 import java.sql.SQLException
 import java.util.*
-import kotlin.math.log
 
 
 @Service
