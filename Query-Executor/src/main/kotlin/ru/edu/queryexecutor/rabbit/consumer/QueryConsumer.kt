@@ -2,31 +2,28 @@ package ru.edu.queryexecutor.rabbit.consumer
 
 import mu.KotlinLogging
 import org.springframework.amqp.rabbit.annotation.RabbitListener
-import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import org.springframework.messaging.Message
 import org.springframework.stereotype.Service
-import ru.edu.queryexecutor.config.dto.Database
-import ru.edu.queryexecutor.config.dto.DatabaseList
+import ru.edu.queryexecutor.feign.InstancesManagerClient
+import ru.edu.queryexecutor.feign.request.InstanceEntity
 import ru.edu.queryexecutor.rabbit.producer.QueryProducer
 import ru.edu.queryexecutor.request.QueryRequest
 import java.sql.SQLException
 
 @Service
 class QueryConsumer(
-    private val databaseList: DatabaseList,
-    private val queryProducer: QueryProducer
+    private val queryProducer: QueryProducer,
+    private val instancesManagerClient: InstancesManagerClient
 ) {
     private val logger = KotlinLogging.logger { }
-    fun findDriver(driverName: String?): Database? {
-        try {
-            return databaseList.databases?.stream()?.filter {
-                it.driverClassName.equals(driverName)
-            }?.findFirst()?.orElseThrow()
-        } catch (ex: NoSuchElementException) {
+    fun findDriver(driverName: String): InstanceEntity? {
+        return try {
+            instancesManagerClient.findInstanceByDbms(driverName)
+        } catch (ex: Exception) {
             logger.error(ex.message)
+            null
         }
-        return null
     }
 
     @RabbitListener(queues = ["\${spring.rabbitmq.consumer.request.queue}"])
