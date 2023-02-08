@@ -9,8 +9,11 @@ import org.springframework.security.crypto.bcrypt.BCrypt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.PathVariable
 import ru.edu.databasemanager.config.dto.Database
 import ru.edu.databasemanager.config.dto.DatabaseList
+import ru.edu.databasemanager.feign.InstancesManagerClient
+import ru.edu.databasemanager.feign.request.InstanceEntity
 import ru.edu.databasemanager.request.CreateUserRequest
 import ru.edu.databasemanager.request.DatabaseRequest
 import ru.edu.databasemanager.response.*
@@ -23,23 +26,21 @@ import kotlin.math.log
 
 @Service
 class DatabaseService(
-    private val databaseList: DatabaseList
+    private val instancesManagerClient: InstancesManagerClient
 ) {
     private val logger = KotlinLogging.logger { }
-    fun findDriver(driverName: String?): Database? {
-        try {
-            return databaseList.databases?.stream()?.filter {
-                it.driverClassName.equals(driverName)
-            }?.findFirst()?.orElseThrow()
-        } catch (ex: NoSuchElementException) {
+    fun findDriver(driverName: String): InstanceEntity? {
+        return try {
+            instancesManagerClient.findInstanceByDbms(driverName)
+        } catch (ex: Exception) {
             logger.error(ex.message)
+            null
         }
-        return null
     }
 
     fun createDatabase(request: DatabaseRequest): ResponseEntity<Any> {
         return try {
-            val database = findDriver(request.dbms)
+            val database = findDriver(request.dbms.toString())
             val user = createUser(
                 CreateUserRequest(
                     request.database,
@@ -72,7 +73,7 @@ class DatabaseService(
 
     fun deleteDatabase(request: DatabaseRequest): Any {
         return try {
-            val database = findDriver(request.dbms)
+            val database = findDriver(request.dbms.toString())
             val connection = DriverManager.getConnection(database?.url, database?.username, database?.password)
             connection?.createStatement()?.executeUpdate("drop database ${request.database}")
             logger.info("Database: ${request.database} deleted successfully")
@@ -93,7 +94,7 @@ class DatabaseService(
 
     private fun createUser(request: CreateUserRequest): ResponseEntity<Any> {
         return try {
-            val database = findDriver(request.dbms)
+            val database = findDriver(request.dbms.toString())
             val connection = DriverManager.getConnection(database?.url, database?.username, database?.password)
             val password = RandomStringUtils.random(30, true, true).lowercase(Locale.getDefault())
             val login = RandomStringUtils.random(10, true, true).lowercase(Locale.getDefault())

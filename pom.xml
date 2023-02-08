@@ -9,6 +9,7 @@
 
     <modules>
         <module>Authorization-Service</module>
+        <module>Instance-Manager</module>
         <module>Database-Manager</module>
         <module>Query-Executor</module>
         <module>Table-Manager</module>

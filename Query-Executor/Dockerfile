@@ -1,4 +1,4 @@
 FROM openjdk:17
-FROM rabbitmq
-ADD ./target/query-executor-0.0.1.jar query-executor.jar
-ENTRYPOINT ["java","-jar","query-executor.jar"]
+EXPOSE 8082
+ADD ./Query-Executor/target/query-executor-0.0.1.jar query-executor.jar
+CMD ["java","-jar","query-executor.jar"]

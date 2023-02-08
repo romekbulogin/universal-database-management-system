@@ -1,9 +1,5 @@
 logging:
   config: 'classpath:log4j2.yml'
 
-spring:
-  config:
-    import: file:databases.yml
-
 server:
   port: 8081
