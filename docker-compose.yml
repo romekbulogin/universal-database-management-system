@@ -29,7 +29,7 @@ services:
     image: authorization-service
     container_name: 'authorization-service'
     depends_on:
-      - udbms_users_db
+      - udbms_users
     ports:
       - "8080:8080"
 
