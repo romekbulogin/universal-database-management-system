@@ -3,6 +3,7 @@ package ru.edu.tablemanager.controller
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import ru.edu.tablemanager.JsonToDDL
 import ru.edu.tablemanager.request.TableViewRequest
 import ru.edu.tablemanager.service.TableManagerService
 

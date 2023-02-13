@@ -1,4 +1,4 @@
-package ru.edu.tablemanager.feign.request
+package ru.edu.tablemanager.feign.instances.request
 
 
 data class InstanceEntity(

@@ -1,10 +1,10 @@
-package ru.edu.tablemanager.feign
+package ru.edu.tablemanager.feign.instances
 
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
-import ru.edu.tablemanager.feign.request.InstanceEntity
+import ru.edu.tablemanager.feign.instances.request.InstanceEntity
 
 @FeignClient(value = "instancesmanager", url = "http://localhost:8084/")
 interface InstancesManagerClient {

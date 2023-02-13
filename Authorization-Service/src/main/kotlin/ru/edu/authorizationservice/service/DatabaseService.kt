@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.ser.Serializers.Base
 import feign.FeignException
 import mu.KotlinLogging
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.http.HttpStatus
@@ -22,10 +23,15 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.security.KeyFactory
 import java.security.PublicKey
+import java.security.Security
+import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
+import java.security.spec.PKCS8EncodedKeySpec
 import java.security.spec.X509EncodedKeySpec
 import java.util.*
+import java.util.stream.Collectors
 import javax.crypto.Cipher
+import kotlin.math.log
 
 
 @Service
@@ -48,7 +54,8 @@ class DatabaseService(
                 this.databaseName = request.database
                 this.userEntity = currentUser
                 this.login = response.username
-                this.passwordDbms = Base64.getEncoder().encodeToString(cipher.doFinal(response.password?.toByteArray(Charsets.UTF_8)))
+                this.passwordDbms =
+                    Base64.getEncoder().encodeToString(cipher.doFinal(response.password?.toByteArray(Charsets.UTF_8)))
             }
             databaseRepository.save(database)
             currentUser.addDatabase(database)
@@ -90,8 +97,13 @@ class DatabaseService(
 
     fun viewDatabaseList(token: String): ResponseEntity<Any> {
         return try {
+            val decryptCipher = Cipher.getInstance("RSA")
+            decryptCipher.init(Cipher.DECRYPT_MODE, getPrivateKey())
             val currentUser = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
             val databases = databaseRepository.findAllByUserEntity(currentUser)
+            databases.forEach {
+                it.passwordDbms = String(decryptCipher.doFinal(Base64.getDecoder().decode(it.passwordDbms)))
+            }
             ResponseEntity(databases, HttpStatus.OK)
         } catch (ex: Exception) {
             logger.error(ex.message)
@@ -115,5 +127,45 @@ class DatabaseService(
         val keyFactory = KeyFactory.getInstance("RSA")
         val keySpec = X509EncodedKeySpec(encoded)
         return keyFactory.generatePublic(keySpec) as PublicKey
+    }
+
+    private fun getPrivateKey(): RSAPrivateKey {
+        Security.addProvider(
+            BouncyCastleProvider()
+        )
+        val key = String(
+            Files.readAllBytes(Paths.get("Authorization-Service\\src\\main\\resources\\privatekey.pem")),
+            Charset.defaultCharset()
+        )
+
+        val privateKeyPEM = key
+            .replace("-----BEGIN PRIVATE KEY-----", "")
+            .replace(System.lineSeparator().toRegex(), "")
+            .replace("-----END PRIVATE KEY-----", "")
+
+        val encoded: ByteArray = Base64.getDecoder().decode(privateKeyPEM)
+
+        val keyFactory = KeyFactory.getInstance("RSA")
+        val keySpec = PKCS8EncodedKeySpec(encoded)
+        return keyFactory.generatePrivate(keySpec) as RSAPrivateKey
+    }
+
+    fun findLoginAndPassword(request: AddDatabaseRequest, token: String): ResponseEntity<Any> {
+        return try {
+            logger.info("[AuthParam] $request")
+            val user = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
+            val database = databaseRepository.findDatabaseEntityByDatabaseNameAndAndDbmsAndAndUserEntity(
+                request.database!!,
+                request.dbms!!,
+                user
+            )
+            val decryptCipher = Cipher.getInstance("RSA")
+            decryptCipher.init(Cipher.DECRYPT_MODE, getPrivateKey())
+            database.passwordDbms = String(decryptCipher.doFinal(Base64.getDecoder().decode(database.passwordDbms)))
+            ResponseEntity(mapOf("login" to database.login, "password" to database.passwordDbms), HttpStatus.OK)
+        } catch (ex: Exception) {
+            logger.error(ex.message)
+            ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
+        }
     }
 }
