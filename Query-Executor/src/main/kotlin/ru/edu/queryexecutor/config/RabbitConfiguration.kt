@@ -17,28 +17,15 @@ class RabbitConfiguration {
     @Value("\${spring.rabbitmq.consumer.request.queue}")
     private val queueRequestName: String? = null
 
-    @Value("\${spring.rabbitmq.consumer.response.queue-response}")
-    private val queueResponseName: String? = null
-
     @Value("\${spring.rabbitmq.consumer.request.routing-key}")
     private val routingKeyRequest: String? = null
 
-    @Value("\${spring.rabbitmq.consumer.response.routing-key-response}")
-    private val routingKeyResponse: String? = null
-
-
     @Bean
     fun queueExecutor() = Queue(queueRequestName, false)
-
-    @Bean
-    fun queueResponse() = Queue(queueResponseName, false)
 
     @Bean
     fun exchange() = DirectExchange(exchange)
 
     @Bean
     fun bindingRequest(): Binding? = BindingBuilder.bind(queueExecutor()).to(exchange()).with(routingKeyRequest)
-
-    @Bean
-    fun bindingResponse(): Binding? = BindingBuilder.bind(queueResponse()).to(exchange()).with(routingKeyResponse)
 }

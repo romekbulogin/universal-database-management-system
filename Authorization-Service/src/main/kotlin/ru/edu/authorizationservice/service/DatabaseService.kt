@@ -1,12 +1,13 @@
 package ru.edu.authorizationservice.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.ser.Serializers.Base
 import feign.FeignException
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import ru.edu.authorizationservice.entity.DatabaseEntity
 import ru.edu.authorizationservice.feign.databasemanager.DatabaseManagerClient
@@ -16,6 +17,16 @@ import ru.edu.authorizationservice.repository.DatabaseRepository
 import ru.edu.authorizationservice.repository.UserRepository
 import ru.edu.authorizationservice.request.AddDatabaseRequest
 import ru.edu.authorizationservice.request.DeleteDatabase
+import java.nio.charset.Charset
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.security.KeyFactory
+import java.security.PublicKey
+import java.security.interfaces.RSAPublicKey
+import java.security.spec.X509EncodedKeySpec
+import java.util.*
+import javax.crypto.Cipher
+
 
 @Service
 class DatabaseService(
@@ -28,7 +39,8 @@ class DatabaseService(
     private val objectMapper = ObjectMapper()
     fun addNewDatabaseForUser(request: AddDatabaseRequest, token: String): ResponseEntity<Any> {
         return try {
-            val passwordEncoder = BCryptPasswordEncoder()
+            val cipher = Cipher.getInstance("RSA")
+            cipher.init(Cipher.ENCRYPT_MODE, getPublicKey())
             val response = databaseManagerClient.createDatabase(request)
             val currentUser = userRepository.findByEmail(jwtService.extractUsername(token.substring(7))).get()
             val database = DatabaseEntity().apply {
@@ -36,7 +48,7 @@ class DatabaseService(
                 this.databaseName = request.database
                 this.userEntity = currentUser
                 this.login = response.username
-                this.passwordDbms = passwordEncoder.encode(response.password)
+                this.passwordDbms = Base64.getEncoder().encodeToString(cipher.doFinal(response.password?.toByteArray(Charsets.UTF_8)))
             }
             databaseRepository.save(database)
             currentUser.addDatabase(database)
@@ -85,5 +97,23 @@ class DatabaseService(
             logger.error(ex.message)
             ResponseEntity(mapOf("error" to ex.message), HttpStatus.BAD_REQUEST)
         }
+    }
+
+    private fun getPublicKey(): PublicKey? {
+        val key = String(
+            Files.readAllBytes(Paths.get("Authorization-Service\\src\\main\\resources\\publickey.pem")),
+            Charset.defaultCharset()
+        )
+
+        val publicKeyPEM = key
+            .replace("-----BEGIN PUBLIC KEY-----", "")
+            .replace(System.lineSeparator().toRegex(), "")
+            .replace("-----END PUBLIC KEY-----", "")
+
+        val encoded: ByteArray = Base64.getDecoder().decode(publicKeyPEM)
+
+        val keyFactory = KeyFactory.getInstance("RSA")
+        val keySpec = X509EncodedKeySpec(encoded)
+        return keyFactory.generatePublic(keySpec) as PublicKey
     }
 }

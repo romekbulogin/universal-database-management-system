@@ -88,10 +88,10 @@ class DatabaseService(
             val database = findDriver(request.dbms.toString())
             val connection = DriverManager.getConnection(database?.url, database?.username, database?.password)
             val password = RandomStringUtils.random(30, true, true).lowercase(Locale.getDefault())
-            val login = RandomStringUtils.random(10, true, true).lowercase(Locale.getDefault())
+            val login = RandomStringUtils.random(10, true, false).lowercase(Locale.getDefault())
             connection.createStatement().execute(
                 database?.sqlCreateUser?.replace("usertag", login)
-                    ?.replace("passtag", "'${password}'")
+                    ?.replace("passtag", password)
             )
             connection.close()
             ResponseEntity(CreateUserResponse(login, password), HttpStatus.OK)

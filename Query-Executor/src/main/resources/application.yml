@@ -3,8 +3,6 @@ logging:
 server:
   port: 8082
 spring:
-  config:
-    import: file:databases.yml
   rabbitmq:
     consumer:
       exchange: query-executor-exchange
