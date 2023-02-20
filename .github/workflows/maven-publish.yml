@@ -21,6 +21,7 @@ jobs:
       packages: write
 
     steps:
+    - uses: actions/checkout@v3
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:
@@ -32,8 +33,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        server-id: github
+        settings-path: ${{ github.workspace }}
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dmaven.test.skip
