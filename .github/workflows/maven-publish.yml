@@ -53,17 +53,17 @@ jobs:
       run: |  
         docker-compose build
         
-    - name: Push ${{env.AUTHORIZATION_SERVICE}} to GHCR
+    - name: Push $AUTHORIZATION_SERVICE to GHCR
       run: |
-        docker tag ${{env.AUTHORIZATION_SERVICE}} ghcr.io/romekbulogin/${{env.AUTHORIZATION_SERVICE}}:latest
-        docker push ghcr.io/romekbulogin/${{env.AUTHORIZATION_SERVICE}}:latest
+        docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+        docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
         
-    - name: Push ${{env.INSTANCE-MANAGER}} to GHCR
+    - name: Push $INSTANCE-MANAGER to GHCR
       run: |
-        docker tag ${{env.INSTANCE-MANAGER}} ghcr.io/romekbulogin/${{env.INSTANCE-MANAGER}}:latest
-        docker push ghcr.io/romekbulogin/${{env.INSTANCE-MANAGER}}:latest
+        docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+        docker push ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
 
-    - name: Push ${{env.DATABASE-MANAGER}} to GHCR
+    - name: Push $DATABASE-MANAGER to GHCR
       run: |
-        docker tag ${{env.DATABASE-MANAGER}} ghcr.io/romekbulogin/${{env.DATABASE-MANAGER}}:latest
-        docker push ghcr.io/romekbulogin/${{env.DATABASE-MANAGER}}:latest
+        docker tag $DATABASE-MANAGER ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
+        docker push ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
