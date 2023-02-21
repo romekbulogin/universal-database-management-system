@@ -1,6 +1,3 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
 name: Maven Package
 
 on:
@@ -8,7 +5,13 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
-
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+  AUTHORIZATION_SERVICE: authorization-service
+  DATABASE-MANAGER: database-manager
+  INSTANCE-MANAGER: instance-manager
+  QUERY-EXECUTOR: query-executor
+  TABLE-MANAGER: table-manager
 jobs:
   build:
 
@@ -30,18 +33,37 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        server-id: github
+        settings-path: ${{ github.workspace }}
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dmaven.test.skip
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+      
+  push_to_cr:
+    needs: build
+    
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      
+    steps:
     - name: Log into GitHub Container Registry
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-    - name: Push image to GitHub Container Registry
-      run: |  
-        docker-compose build
-        docker images
-        docker tag authorization-service ghcr.io/romekbulogin/authorizateion-service:latest
-        docker push ghcr.io/romekbulogin/authorizateion-service:latest
+    - name: Docker-Compose Build
+      run: docker-compose build
+        
+    - name: Push $AUTHORIZATION_SERVICE to GHCR
+      run: |
+        docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+        docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+        
+    - name: Push $INSTANCE-MANAGER to GHCR
+      run: |
+        docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+        docker push ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+
+    - name: Push $DATABASE-MANAGER to GHCR
+      run: |
+        docker tag $DATABASE-MANAGER ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
+        docker push ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
