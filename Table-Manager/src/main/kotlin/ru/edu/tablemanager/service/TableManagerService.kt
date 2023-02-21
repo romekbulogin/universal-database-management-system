@@ -1,6 +1,14 @@
 package ru.edu.tablemanager.service
 
 import mu.KotlinLogging
+import org.jooq.DataType
+import org.jooq.Field
+import org.jooq.SQLDialect
+import org.jooq.impl.DSL
+import org.jooq.impl.DSL.constraint
+import org.jooq.impl.SQLDataType.INTEGER
+import org.jooq.impl.SQLDataType.VARCHAR
+import org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration.DslContextConfiguration
 import org.springframework.stereotype.Service
 import ru.edu.tablemanager.feign.authentication.AuthenticationServiceClient
 import ru.edu.tablemanager.feign.authentication.request.AuthParamRequest
@@ -48,6 +56,18 @@ class TableManagerService(
             logger.error(ex.message)
             mapOf("error" to ex.message)
         }
+    }
+
+    fun createTable(request: TableViewRequest) {
+        val response = authenticationServiceClient.getAuthParam(AuthParamRequest(request.database, request.dbms))
+        val database = findDriver(request.dbms.toString())
+        val connection =
+            DriverManager.getConnection("${database?.url}${request.database}", response.login, response.password)
+        val dslContext = DSL.using(connection, SQLDialect.valueOf(request.dbms.toString()))
+        dslContext.createTable("cool_table").column("firstname", VARCHAR)
+            .constraints(
+                constraint("pk").primaryKey("firstname")
+            )
     }
 }
 
