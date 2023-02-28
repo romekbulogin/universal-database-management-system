@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3'
 
 services:
   udbms_users:
@@ -9,18 +9,18 @@ services:
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
       - 'POSTGRES_DB=udbms_users'
 
- rabbitmq:
-   image: rabbitmq:3.11.8-management
-   restart: always
-   environment:
-     - RABBITMQ_DEFAULT_USER=admin
-     - RABBITMQ_DEFAULT_PASS=admin
-     - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
-   volumes:
-     - ./rabbitmq:/var/lib/rabbitmq
-   ports:
-     - "15672:15672"
-     - "5672:5672"
+  rabbitmq:
+    image: rabbitmq:3.11.8-management
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
 
   authorization-service:
     build:
@@ -42,22 +42,22 @@ services:
     ports:
       - "8081:8081"
 
- query-executor:
-   build:
-     dockerfile: ./Query-Executor/Dockerfile
-     context: .
-   image: query-executor
-   container_name: 'query-executor'
-   depends_on:
-     - rabbitmq
-   ports:
-     - "8082:8082"
+  query-executor:
+    build:
+      dockerfile: ./Query-Executor/Dockerfile
+      context: .
+    image: query-executor
+    container_name: 'query-executor'
+    depends_on:
+      - rabbitmq
+    ports:
+      - "8082:8082"
 
- table-manager:
-   build:
-     dockerfile: ./Table-Manager/Dockerfile
-     context: .
-   image: table-manager
-   container_name: 'table-manager'
-   ports:
-     - "8083:8083"
+  table-manager:
+    build:
+      dockerfile: ./Table-Manager/Dockerfile
+      context: .
+    image: table-manager
+    container_name: 'table-manager'
+    ports:
+      - "8083:8083"
