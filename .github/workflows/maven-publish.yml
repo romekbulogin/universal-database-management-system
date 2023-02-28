@@ -50,7 +50,6 @@ jobs:
     steps:
     - name: Log into GitHub Container Registry
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-    - uses: actions/checkout@v3
     - name: Docker-Compose Build
       run: docker-compose build
         
