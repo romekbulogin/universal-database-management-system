@@ -16,20 +16,24 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
+    name: Maven build with caching
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v1
         with:
-          java-version: '17'
-          distribution: 'adopt'
-          server-id: github
-          settings-path: ${{ github.workspace }}
-
+          java-version: 17
+      - name: Restore Maven cache
+        uses: skjolber/maven-cache-github-action@v1
+        with:
+          step: restore
+      - name: Build application with Maven
+        run: mvn --batch-mode --update-snapshots verify
+      - name: Save Maven cache
+        uses: skjolber/maven-cache-github-action@v1
+        with:
+          step: save
       - name: Build with Maven
         run: mvn clean -B package --file pom.xml -Dmaven.test.skip
 
