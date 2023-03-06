@@ -9,23 +9,23 @@ services:
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
       - 'POSTGRES_DB=udbms_users'
 
-#  rabbitmq:
-#    image: rabbitmq:3.11.8-management
-#    restart: always
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=admin
-#      - RABBITMQ_DEFAULT_PASS=admin
-#      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
-#    volumes:
-#      - ./rabbitmq:/var/lib/rabbitmq
-#    ports:
-#      - "15672:15672"
-#      - "5672:5672"
+  #  rabbitmq:
+  #    image: rabbitmq:3.11.8-management
+  #    restart: always
+  #    environment:
+  #      - RABBITMQ_DEFAULT_USER=admin
+  #      - RABBITMQ_DEFAULT_PASS=admin
+  #      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
+  #    volumes:
+  #      - ./rabbitmq:/var/lib/rabbitmq
+  #    ports:
+  #      - "15672:15672"
+  #      - "5672:5672"
 
   authorization-service:
     build:
-      dockerfile: ./Authorization-Service/Dockerfile
       context: .
+      dockerfile: ./Authorization-Service/Dockerfile
     image: authorization-service
     container_name: 'authorization-service'
     depends_on:
