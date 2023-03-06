@@ -4,7 +4,7 @@ Configuration:
   Properties:
     property:
       - name: log-path
-        value: "Query-Executor/logs"
+        value: "/logs"
       - name: log-archive
         value: "${log-path}/archive"
       - name: log-pattern
