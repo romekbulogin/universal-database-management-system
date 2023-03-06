@@ -46,7 +46,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Docker-Compose Build
         run: |
-          sudo systemctl restart docker.service
+          pwd
           docker-compose build
 
       - name: Push $AUTHORIZATION_SERVICE to GHCR
