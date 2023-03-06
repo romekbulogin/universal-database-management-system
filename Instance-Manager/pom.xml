@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.edu</groupId>
-    <artifactId>Instance-Manager</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Instance-Manager</name>
-    <description>Instance-Manager</description>
+    <artifactId>instance-manager</artifactId>
+    <version>0.0.1</version>
+    <name>instance-manager</name>
+    <description>instance-manager</description>
     <properties>
         <java.version>17</java.version>
         <kotlin.version>1.7.22</kotlin.version>
