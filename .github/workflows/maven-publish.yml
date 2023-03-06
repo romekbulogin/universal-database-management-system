@@ -47,7 +47,8 @@ jobs:
       - name: Docker-Compose Build
         run: |
           pwd
-          ls -la
+          ll
+          find ./ -type f
           docker-compose build
 
       - name: Push $AUTHORIZATION_SERVICE to GHCR
