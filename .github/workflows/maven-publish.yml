@@ -42,14 +42,12 @@ jobs:
       packages: write
 
     steps:
+      - uses: actions/checkout@v3
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+      - uses: actions/checkout@v3
       - name: Docker-Compose Build
-        run: |
-          pwd
-          ll
-          find ./ -type f
-          docker-compose build
+        run: docker-compose build
 
       - name: Push $AUTHORIZATION_SERVICE to GHCR
         run: |
