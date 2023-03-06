@@ -31,7 +31,7 @@ jobs:
           settings-path: ${{ github.workspace }}
 
       - name: Build with Maven
-        run: mvn clean -B package --file pom.xml -Dmaven.test.skip
+        run: mvn clean package -Dmaven.test.skip
 
   push_to_cr:
     needs: build
@@ -42,7 +42,6 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/checkout@v3
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
       - uses: actions/checkout@v3
