@@ -42,10 +42,10 @@ jobs:
   push_to_cr:
     needs: build
     
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: read
-#      packages: write
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Log into GitHub Container Registry
