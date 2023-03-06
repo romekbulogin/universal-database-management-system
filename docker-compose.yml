@@ -25,7 +25,7 @@ services:
   authorization-service:
     build:
       dockerfile: ./Authorization-Service/Dockerfile
-      context: .
+#      context: .
     image: authorization-service
     container_name: 'authorization-service'
     depends_on:
