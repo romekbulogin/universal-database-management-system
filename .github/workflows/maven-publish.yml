@@ -33,41 +33,35 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -Dmaven.test.skip
 
-  push_to_cr:
-    needs: build
-    
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-
-
-    steps:
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Print dir
-        run: find "$(pwd)" -name .jar
-      - uses: actions/checkout@v3
 
       - name: Docker-Compose Build
         run: docker compose build
 
-      - name: Push $AUTHORIZATION_SERVICE to GHCR
+      - name: Push authorization-service to GHCR
         run: |
-          docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
-          docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
-
-#      - name: Push $INSTANCE-MANAGER to GHCR
-#        run: |
-#          docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
-#          docker push ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+          docker tag authorization-service ghcr.io/romekbulogin/authorization-service:latest
+          docker push ghcr.io/romekbulogin/authorization-service:latest
+#  push_to_cr:
+#    needs: build
 #
-#      - name: Push $DATABASE-MANAGER to GHCR
-#        run: |
-#          docker tag $DATABASE-MANAGER ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
-#          docker push ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      packages: write
+#
+#
+#
+#    steps:
+#
+#
+##      - name: Push $INSTANCE-MANAGER to GHCR
+##        run: |
+##          docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+##          docker push ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+##
+##      - name: Push $DATABASE-MANAGER to GHCR
+##        run: |
+##          docker tag $DATABASE-MANAGER ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
+##          docker push ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
