@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  udbms_users:
-    image: postgres:15
-    container_name: 'udbms_users'
-    environment:
-      - 'POSTGRES_USER=postgres'
-      - 'POSTGRES_HOST_AUTH_METHOD=trust'
-      - 'POSTGRES_DB=udbms_users'
+#  udbms_users:
+#    image: postgres:15
+#    container_name: 'udbms_users'
+#    environment:
+#      - 'POSTGRES_USER=postgres'
+#      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+#      - 'POSTGRES_DB=udbms_users'
 
   #  rabbitmq:
   #    image: rabbitmq:3.11.8-management
@@ -29,8 +29,6 @@ services:
 
     image: authorization-service
     container_name: 'authorization-service'
-    depends_on:
-      - udbms_users
     ports:
       - "8080:8080"
 
