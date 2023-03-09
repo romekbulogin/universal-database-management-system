@@ -55,8 +55,8 @@ jobs:
         with:
           push: true
           tags: authorization-service/latest
-          context: Authorization-Service
-          file: Authorization-Service/Dockerfile
+          context: ./Authorization-Service
+          file: Dockerfile
       - uses: actions/checkout@v3
 
 #      - name: Docker-Compose Build
