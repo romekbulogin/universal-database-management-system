@@ -59,7 +59,7 @@ jobs:
           context: ./Authorization-Service
           file: ./Dockerfile
           push: true
-          tags: $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+          tags: authorization-service ghcr.io/romekbulogin/authorization-service:latest
 
 #      - name: Push $AUTHORIZATION_SERVICE to GHCR
 #        run: |
