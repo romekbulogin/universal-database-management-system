@@ -24,7 +24,7 @@ services:
 
   authorization-service:
     build:
-      context: ./Authorization-Service
+      context: /Authorization-Service
       dockerfile: /Dockerfile
 
     image: authorization-service
