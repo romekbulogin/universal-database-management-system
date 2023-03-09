@@ -25,8 +25,8 @@ services:
   authorization-service:
     build:
       context: ./Authorization-Service
-      dockerfile: /Dockerfile
-
+      dockerfile: Dockerfile
+    working_dir: ./Authorization-Service
     image: authorization-service
     container_name: 'authorization-service'
     ports:
