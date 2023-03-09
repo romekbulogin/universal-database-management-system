@@ -33,9 +33,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -Dmaven.test.skip
 
-      - name: XDTesting Print Directory Structure
-        uses: FiorelaCiroku/XDTesting-Print-Directory-Structure@v1.0.2
-
   push_to_cr:
     needs: build
     
@@ -47,19 +44,28 @@ jobs:
 
 
     steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
+      - name: Build business-layer container
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: authorization-service/latest
+          context: Authorization-Service
+          file: Authorization-Service/Dockerfile
       - uses: actions/checkout@v3
 
-      - name: Docker-Compose Build
-        run: docker-compose build
+#      - name: Docker-Compose Build
+#        run: docker-compose build
 
-      - name: Push $AUTHORIZATION_SERVICE to GHCR
-        run: |
-          docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
-          docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+#      - name: Push $AUTHORIZATION_SERVICE to GHCR
+#        run: |
+#          docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+#          docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
 
 #      - name: Push $INSTANCE-MANAGER to GHCR
 #        run: |
