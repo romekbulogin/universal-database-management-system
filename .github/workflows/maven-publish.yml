@@ -39,10 +39,10 @@ jobs:
       - name: Docker-Compose Build
         run: docker compose build
 
-      - name: Push authorization-service to GHCR
+      - name: Push $AUTHORIZATION_SERVICE to GHCR
         run: |
-          docker tag authorization-service ghcr.io/romekbulogin/authorization-service:latest
-          docker push ghcr.io/romekbulogin/authorization-service:latest
+          docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
+          docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
 #  push_to_cr:
 #    needs: build
 #
