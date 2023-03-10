@@ -31,16 +31,14 @@ jobs:
           settings-path: ${{ github.workspace }}
 
       - name: Build with Maven
-        run: mvn clean package -Dmaven.test.skip
-
-      - uses: actions/checkout@v3
-
-      - run: mkdir -p mkdir -p Authorization-Service/target
+        run: |
+          mvn clean package -Dmaven.test.skip
+          mkdir staging && cp Authorization-Service/*.jar staging
 
       - uses: actions/upload-artifact@v3
         with:
           name: authorization-service
-          path: /Authorization-Service/target/authorization-service-0.0.1.jar
+          path: staging
 
 #  push_to_cr:
 #    needs: build
