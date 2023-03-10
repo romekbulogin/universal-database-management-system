@@ -33,7 +33,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn clean package -Dmaven.test.skip
-          mkdir staging && cp Authorization-Service/*.jar staging
+          mkdir staging && cp universal-database-management-system/Authorization-Service/target/*.jar staging
 
       - uses: actions/upload-artifact@v3
         with:
