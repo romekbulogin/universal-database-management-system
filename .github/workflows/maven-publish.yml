@@ -51,8 +51,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
-          path: ./Authorization-Service/target/authorization-service-0.0.1.jar
+          name: authorization-service
+          path: universal-database-management-system/Authorization-Service/target/authorization-service-0.0.1.jar
 
 #      - name: Log into GitHub Container Registry
 #        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
