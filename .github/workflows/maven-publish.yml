@@ -40,7 +40,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: authorization-service
-          path: */Authorization-Service/target/authorization-service-0.0.1.jar
+          path: /Authorization-Service/target/authorization-service-0.0.1.jar
 
 #  push_to_cr:
 #    needs: build
