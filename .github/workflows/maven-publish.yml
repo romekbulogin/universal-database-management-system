@@ -43,7 +43,7 @@ jobs:
           docker tag $AUTHORIZATION_SERVICE ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
           docker push ghcr.io/romekbulogin/$AUTHORIZATION_SERVICE:latest
 
-      - name: Push $INSTANCE-MANAGER to GHCR
+      - name: Push $INSTANCE_MANAGER to GHCR
         run: |
-          docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE_MANAGER:latest
+          docker tag $INSTANCE_MANAGER ghcr.io/romekbulogin/$INSTANCE_MANAGER:latest
           docker push ghcr.io/romekbulogin/$INSTANCE_MANAGER:latest
