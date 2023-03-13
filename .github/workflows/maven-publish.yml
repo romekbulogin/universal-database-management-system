@@ -8,10 +8,10 @@ on:
 env:
   GITHUB_TOKEN: ${{ github.token }}
   AUTHORIZATION_SERVICE: authorization-service
-  DATABASE_MANAGER: database-manager
-  INSTANCE_MANAGER: instance-manager
-  QUERY_EXECUTOR: query-executor
-  TABLE_MANAGER: table-manager
+  DATABASE_MANAGER: database_manager
+  INSTANCE_MANAGER: instance_manager
+  QUERY_EXECUTOR: query_executor
+  TABLE_MANAGER: table_manager
 jobs:
   Build_and_Push_to_GHCR:
     runs-on: ubuntu-latest
