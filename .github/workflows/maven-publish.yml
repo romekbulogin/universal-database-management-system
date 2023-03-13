@@ -13,8 +13,7 @@ env:
   QUERY-EXECUTOR: query-executor
   TABLE-MANAGER: table-manager
 jobs:
-  Build and Push to GHCR:
-
+  Build_and_Push_to_GHCR:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -44,8 +43,3 @@ jobs:
         run: |
           docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
           docker push ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
-
-      - name: Push $DATABASE-MANAGER to GHCR
-        run: |
-          docker tag $DATABASE-MANAGER ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
-          docker push ghcr.io/romekbulogin/$DATABASE-MANAGER:latest
