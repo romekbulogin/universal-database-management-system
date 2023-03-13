@@ -31,6 +31,15 @@ services:
     ports:
       - "8080:8080"
 
+  instance_manager:
+    build:
+      context: ./
+      dockerfile: Instance-Manager/Dockerfile
+    image: instance_manager
+    container_name: 'instance_manager'
+    ports:
+      - "8084:8084"
+
 #  database-manager:
 #    build:
 #      dockerfile: ./Database-Manager/Dockerfile
