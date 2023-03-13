@@ -8,10 +8,10 @@ on:
 env:
   GITHUB_TOKEN: ${{ github.token }}
   AUTHORIZATION_SERVICE: authorization-service
-  DATABASE-MANAGER: database-manager
-  INSTANCE-MANAGER: instance-manager
-  QUERY-EXECUTOR: query-executor
-  TABLE-MANAGER: table-manager
+  DATABASE_MANAGER: database-manager
+  INSTANCE_MANAGER: instance-manager
+  QUERY_EXECUTOR: query-executor
+  TABLE_MANAGER: table-manager
 jobs:
   Build_and_Push_to_GHCR:
     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
 
       - name: Push $INSTANCE-MANAGER to GHCR
         run: |
-          docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
-          docker push ghcr.io/romekbulogin/$INSTANCE-MANAGER:latest
+          docker tag $INSTANCE-MANAGER ghcr.io/romekbulogin/$INSTANCE_MANAGER:latest
+          docker push ghcr.io/romekbulogin/$INSTANCE_MANAGER:latest
