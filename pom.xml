@@ -14,5 +14,4 @@
         <module>Query-Executor</module>
         <module>Table-Manager</module>
     </modules>
-
 </project>

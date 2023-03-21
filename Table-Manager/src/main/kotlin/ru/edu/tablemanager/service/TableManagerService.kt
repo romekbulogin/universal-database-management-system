@@ -2,9 +2,14 @@ package ru.edu.tablemanager.service
 
 import mu.KotlinLogging
 import org.jooq.CreateTableColumnStep
+import org.jooq.DataType
+import org.jooq.Field
+import org.jooq.QueryPart
 import org.jooq.SQLDialect
+import org.jooq.Table
 import org.jooq.impl.DSL
-import org.jooq.impl.DSL.constraint
+import org.jooq.impl.DSL.*
+import org.jooq.impl.SQLDataType
 import org.springframework.stereotype.Service
 import ru.edu.tablemanager.feign.authentication.AuthenticationServiceClient
 import ru.edu.tablemanager.feign.authentication.request.AuthParamRequest
@@ -29,6 +34,9 @@ class TableManagerService(
             null
         }
     }
+
+    private fun setPrimaryKey(createTable: CreateTableColumnStep, namePrimaryKey: String, nameColumnName: String) =
+        createTable.constraints(constraint(namePrimaryKey).primaryKey(nameColumnName)) as CreateTableColumnStep?
 
     fun viewTable(request: TableViewRequest): Any {
         return try {
@@ -69,39 +77,20 @@ class TableManagerService(
 //            )
         logger.debug { request }
         var createTable = dslContext.createTable(request.tableName)
+        createTable.column(request.primaryKey?.name, SQLEnum.getSqlDataType(request.primaryKey?.dataType!!))
         request.rawTable.forEach {
-            if (it.length == null) {
-                createTable =
-                    createTable.column(
-                        it.name,
-                        SQLEnum.getSqlDataType(it.dataType!!)?.nullable(it.isNull!!)
-                    )
-                if (it.isPrimaryKey == true) {
-                    createTable =
-                        createTable.constraints(constraint("pk").primaryKey(it.name)) as CreateTableColumnStep?
-                }
+            createTable = if (it.length == null) {
+                createTable.column(
+                    it.name,
+                    SQLEnum.getSqlDataType(it.dataType!!)?.nullable(it.isNull!!)
+                )
             } else {
-                createTable = createTable.column(
+                createTable.column(
                     it.name,
                     SQLEnum.getSqlDataType(it.dataType!!, it.length!!)?.nullable(it.isNull!!)
                 )
-                if (it.isPrimaryKey == true) {
-                    createTable =
-                        createTable.constraints(constraint("pk").primaryKey(it.name)) as CreateTableColumnStep?
-                }
             }
         }
         return createTable.sql
     }
 }
-
-
-/*
-create table public.auth
-(
-    id  serial  primary key,
-    firstname varchar not null,
-    lastname  varchar not null,
-    midname   varchar not null
-);
-*/

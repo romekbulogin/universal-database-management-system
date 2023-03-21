@@ -11,7 +11,7 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:postgresql://udbmsuser/udbms_users
+    url: jdbc:postgresql://localhost:5432/udbms_users
     username: postgres
     password: 1337
     driver-class-name: org.postgresql.Driver
@@ -23,7 +23,10 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-
+springdoc:
+  swagger-ui:
+    config-url: /v3/api-docs
+    url: /v3/api-docs
 secret:
   key: 0JvQrtCR0JvQriDQodCe0KHQkNCi0Kwg0JHQntCb0KzQqNCY0JUg0JLQntCb0J7QodCQ0KLQq9CVINCl0KPQmA==
 
