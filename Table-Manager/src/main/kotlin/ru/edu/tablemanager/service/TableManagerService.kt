@@ -65,26 +65,58 @@ class TableManagerService(
             val dslContext = DSL.using(connection, SQLDialect.POSTGRES)
             logger.debug { request }
             val createTable = dslContext.createTable(request.tableName)
-            createTable.column(
-                request.primaryKey?.columnName,
-                SQLEnum.getSqlDataType(request.primaryKey?.dataType!!)?.identity(request.primaryKey?.isIdentity!!)
-                    ?.length(request.primaryKey?.length!!)
-            ).constraints(
-                constraint(request.primaryKey?.name).primaryKey(request.primaryKey?.columnName)
-            )
-            request.rawTable.forEach {
+
+            //create primary key
+            if (request.primaryKey != null) {
+                createTable.column(
+                    request.primaryKey?.columnName,
+                    SQLEnum.getSqlDataType(request.primaryKey?.dataType!!)?.identity(request.primaryKey?.isIdentity!!)
+                        ?.length(request.primaryKey?.length!!)
+                ).constraints(
+                    constraint(request.primaryKey?.name).primaryKey(request.primaryKey?.columnName)
+                )
+            }
+
+
+            //create simple raws
+            request.columns.forEach {
                 createTable.column(
                     it.name,
                     SQLEnum.getSqlDataType(it.dataType!!)?.sqlDataType?.nullable(it.isNull!!)?.length(it.length)
+                        ?.identity(it.isIdentity!!)
                 )
             }
-            request.uniqueAttributes?.forEach {
-                createTable.unique(it)
+
+            //create unique value
+            if (!request.uniqueAttributes.isNullOrEmpty()) {
+                request.uniqueAttributes.forEach {
+                    createTable.unique(it)
+                }
             }
+
+
+            //create foreign keys
+            if (!request.foreignKeys.isNullOrEmpty()) {
+                request.foreignKeys?.forEach {
+                    createTable.column(
+                        it.columnName,
+                        SQLEnum.getSqlDataType(it.dataType!!)?.identity(it.isIdentity!!)
+                            ?.length(it.length)?.identity(it.isIdentity!!)
+                    ).constraints(
+                        constraint(it.name).foreignKey(it.columnName)
+                            .references(it.referenceTableName, it.referenceColumnName)
+                    )
+                }
+            }
+
+            //execute query
             createTable.execute()
+
             //ебаный костыль, но хуле поделать
-            request.defaultValues?.forEach {
-                dslContext.alterTable(request.tableName).alterColumn(it.key).defaultValue(it.value).execute()
+            if (!request.defaultValues.isNullOrEmpty()) {
+                request.defaultValues.forEach {
+                    dslContext.alterTable(request.tableName).alterColumn(it.key).defaultValue(it.value).execute()
+                }
             }
         } catch (ex: Exception) {
             logger.error(ex.message)
