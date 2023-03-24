@@ -1,15 +1,9 @@
 package ru.edu.tablemanager.service
 
 import mu.KotlinLogging
-import org.jooq.CreateTableColumnStep
-import org.jooq.DataType
-import org.jooq.Field
-import org.jooq.QueryPart
 import org.jooq.SQLDialect
-import org.jooq.Table
 import org.jooq.impl.DSL
 import org.jooq.impl.DSL.*
-import org.jooq.impl.SQLDataType
 import org.springframework.stereotype.Service
 import ru.edu.tablemanager.feign.authentication.AuthenticationServiceClient
 import ru.edu.tablemanager.feign.authentication.request.AuthParamRequest
@@ -34,9 +28,6 @@ class TableManagerService(
             null
         }
     }
-
-    private fun setPrimaryKey(createTable: CreateTableColumnStep, namePrimaryKey: String, nameColumnName: String) =
-        createTable.constraints(constraint(namePrimaryKey).primaryKey(nameColumnName)) as CreateTableColumnStep?
 
     fun viewTable(request: TableViewRequest): Any {
         return try {
@@ -63,34 +54,41 @@ class TableManagerService(
         }
     }
 
-    fun createTable(request: TableCreateRequest): String? {
-//        val response = authenticationServiceClient.getAuthParam(AuthParamRequest(request.database, request.dbms))
+    fun createTable(request: TableCreateRequest) {
+        try {
+            //        val response = authenticationServiceClient.getAuthParam(AuthParamRequest(request.database, request.dbms))
 //        val database = findDriver(request.dbms.toString())
 //        val connection =
 //            DriverManager.getConnection("${database?.url}${request.database}", response.login, response.password)
-        val connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/client", "postgres", "1337")
+            val connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/client", "postgres", "1337")
 //        val dslContext = DSL.using(connection, SQLDialect.valueOf(request.dbms.toString()))
-        val dslContext = DSL.using(connection, SQLDialect.POSTGRES)
-//        dslContext.createTable("cool_table").column("firstname", VARCHAR)
-//            .constraints(
-//                constraint("pk").primaryKey("firstname")
-//            )
-        logger.debug { request }
-        var createTable = dslContext.createTable(request.tableName)
-        createTable.column(request.primaryKey?.name, SQLEnum.getSqlDataType(request.primaryKey?.dataType!!))
-        request.rawTable.forEach {
-            createTable = if (it.length == null) {
+            val dslContext = DSL.using(connection, SQLDialect.POSTGRES)
+            logger.debug { request }
+            val createTable = dslContext.createTable(request.tableName)
+            createTable.column(
+                request.primaryKey?.columnName,
+                SQLEnum.getSqlDataType(request.primaryKey?.dataType!!)?.identity(request.primaryKey?.isIdentity!!)
+                    ?.length(request.primaryKey?.length!!)
+            ).constraints(
+                constraint(request.primaryKey?.name).primaryKey(request.primaryKey?.columnName)
+            )
+            request.rawTable.forEach {
                 createTable.column(
                     it.name,
-                    SQLEnum.getSqlDataType(it.dataType!!)?.nullable(it.isNull!!)
-                )
-            } else {
-                createTable.column(
-                    it.name,
-                    SQLEnum.getSqlDataType(it.dataType!!, it.length!!)?.nullable(it.isNull!!)
+                    SQLEnum.getSqlDataType(it.dataType!!)?.sqlDataType?.nullable(it.isNull!!)?.length(it.length)
                 )
             }
+            request.uniqueAttributes?.forEach {
+                createTable.unique(it)
+            }
+            createTable.execute()
+            //ебаный костыль, но хуле поделать
+            request.defaultValues?.forEach {
+                dslContext.alterTable(request.tableName).alterColumn(it.key).defaultValue(it.value).execute()
+            }
+        } catch (ex: Exception) {
+            logger.error(ex.message)
         }
-        return createTable.sql
     }
 }
+

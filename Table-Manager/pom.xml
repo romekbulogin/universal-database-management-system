@@ -90,17 +90,17 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.13.4</version>
+            <version>3.18.1</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-meta</artifactId>
-            <version>3.13.4</version>
+            <version>3.18.1</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-codegen</artifactId>
-            <version>3.13.4</version>
+            <version>3.18.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

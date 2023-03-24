@@ -5,7 +5,7 @@ import org.jooq.impl.SQLDataType
 
 class SQLEnum {
     companion object {
-        fun getSqlDataType(dataType: String): DataType<*>? {
+        fun getSqlDataType(dataType: String): DataType<out Any>? {
             return when (dataType) {
                 "VARCHAR" -> SQLDataType.VARCHAR
                 "CHAR" -> SQLDataType.CHAR
@@ -58,6 +58,7 @@ class SQLEnum {
                 else -> null
             }
         }
+
 
         fun getSqlDataType(dataType: String, length: Int): DataType<*>? {
             return when (dataType) {
