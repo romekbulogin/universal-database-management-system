@@ -11,7 +11,7 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:postgresql://udbmsuser:5432/udbms_users
+    url: jdbc:postgresql://localhost:5432/udbms_users
     username: postgres
     password: 1337
     driver-class-name: org.postgresql.Driver
