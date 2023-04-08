@@ -1,28 +1,23 @@
 package ru.edu.queryexecutor.rabbit.consumer
 
 import mu.KotlinLogging
-import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import org.springframework.messaging.Message
 import org.springframework.stereotype.Service
+import ru.edu.queryexecutor.dto.UserCredentials
 import ru.edu.queryexecutor.feign.InstancesManagerClient
 import ru.edu.queryexecutor.feign.request.InstanceEntity
 import ru.edu.queryexecutor.request.QueryRequest
-import java.nio.charset.Charset
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.security.KeyFactory
-import java.security.Security
-import java.security.interfaces.RSAPrivateKey
-import java.security.spec.PKCS8EncodedKeySpec
 import java.sql.SQLException
 import java.util.*
 import javax.crypto.Cipher
 
 @Service
 class QueryConsumer(
-    private val instancesManagerClient: InstancesManagerClient
+    private val instancesManagerClient: InstancesManagerClient,
+    private val mainDatabaseInstance: DriverManagerDataSource,
+    private val decryptCipher: Cipher
 ) {
     private val logger = KotlinLogging.logger { }
     fun findDriver(driverName: String): InstanceEntity? {
@@ -43,25 +38,27 @@ class QueryConsumer(
                 database = message.headers["database"].toString()
                 dbms = message.headers["dbms"].toString()
                 login = message.headers["login"].toString()
-                password = message.headers["password"].toString()
             }
-            executeQuery(request)
+            return executeQuery(request)
         } catch (ex: Exception) {
             logger.error(ex.message)
-            ex.message
+            mapOf("error" to ex.message.toString())
         }
     }
 
     fun executeQuery(request: QueryRequest): Any? {
         try {
             logger.info("Request execute: $request")
-            val decryptCipher = Cipher.getInstance("RSA")
-            decryptCipher.init(Cipher.DECRYPT_MODE, getPrivateKey())
             val dataSource = findDriver(request.dbms)
+            val userCredentials = getUserCredentials(request.login, request.database)
             val driverManagerDataSources = DriverManagerDataSource().apply {
                 url = dataSource?.url + request.database
-                username = request.login
-                password = String(decryptCipher.doFinal(Base64.getDecoder().decode(request.password)))
+                username = userCredentials?.login
+                password = String(
+                    decryptCipher.doFinal(
+                        Base64.getDecoder().decode(userCredentials?.password)
+                    )
+                )
             }
             logger.debug("Current connection: ${dataSource?.url}")
             val resultSet = driverManagerDataSources.connection.createStatement()?.executeQuery(request.sql)
@@ -84,24 +81,26 @@ class QueryConsumer(
         }
     }
 
-    private fun getPrivateKey(): RSAPrivateKey {
-        Security.addProvider(
-            BouncyCastleProvider()
-        )
-        val key = String(
-            Files.readAllBytes(Paths.get("Query-Executor\\src\\main\\resources\\privatekey.pem")),
-            Charset.defaultCharset()
-        )
-
-        val privateKeyPEM = key
-            .replace("-----BEGIN PRIVATE KEY-----", "")
-            .replace(System.lineSeparator().toRegex(), "")
-            .replace("-----END PRIVATE KEY-----", "")
-
-        val encoded: ByteArray = Base64.getDecoder().decode(privateKeyPEM)
-
-        val keyFactory = KeyFactory.getInstance("RSA")
-        val keySpec = PKCS8EncodedKeySpec(encoded)
-        return keyFactory.generatePrivate(keySpec) as RSAPrivateKey
+    private fun getUserCredentials(username: String, database: String): UserCredentials? {
+        return try {
+            val userCredentials = UserCredentials()
+            val statement =
+                mainDatabaseInstance.connection.prepareStatement("select login,password_dbms from _databases inner join _user u on u.id = _databases.user_entity_id where username = ? and database_name = ?")
+            statement.setString(1, username)
+            statement.setString(2, database)
+            val resultSet = statement.executeQuery()
+            while (resultSet?.next() == true) {
+                for (i in 1..resultSet.metaData.columnCount) {
+                    userCredentials.apply {
+                        login = resultSet.getString("login")
+                        password = resultSet.getString("password_dbms")
+                    }
+                }
+            }
+            userCredentials
+        } catch (ex: Exception) {
+            logger.error(ex.message)
+            null
+        }
     }
 }

@@ -94,6 +94,7 @@ class TableManagerService(
                 }
             }
 
+            //TODO: реализовать defaulValue для дат и прочего
 
             //create foreign keys
             if (!request.foreignKeys.isNullOrEmpty()) {

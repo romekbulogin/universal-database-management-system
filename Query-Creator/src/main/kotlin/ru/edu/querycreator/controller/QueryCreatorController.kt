@@ -1,17 +1,16 @@
-package ru.edu.queryexecutor.controller
-
+package ru.edu.querycreator.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.edu.queryexecutor.rabbit.producer.QueryProducer
-import ru.edu.queryexecutor.request.QueryRequest
+import ru.edu.querycreator.rabbit.producer.QueryProducer
+import ru.edu.querycreator.request.QueryRequest
 
 @RestController
 @RequestMapping("/api/query_executor")
-class QueryExecutorController(
+class QueryCreatorController(
     private val queryProducer: QueryProducer,
 ) {
 

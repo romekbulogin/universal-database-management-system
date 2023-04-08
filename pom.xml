@@ -13,5 +13,6 @@
         <module>Database-Manager</module>
         <module>Query-Executor</module>
         <module>Table-Manager</module>
+        <module>Query-Creator</module>
     </modules>
 </project>

@@ -1,11 +1,7 @@
 logging:
   config: 'classpath:log4j2.yml'
 server:
-  port: 8082
-database:
-  url: "jdbc:postgresql://localhost:5432/udbms_users"
-  username: "postgres"
-  password: "1337"
+  port: 8085
 spring:
   rabbitmq:
     consumer:
@@ -13,9 +9,6 @@ spring:
       request:
         queue: query-executor-queue
         routing-key: query-executor-routing-key
-      response:
-        queue-response: query-executor-queue-response
-        routing-key-response: query-executor-routing-key-response
 
     username: guest
     password: guest
